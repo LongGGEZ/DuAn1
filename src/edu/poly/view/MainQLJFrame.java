@@ -45,28 +45,28 @@ public class MainQLJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblImage = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         lblDongHo = new javax.swing.JLabel();
         lblText = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        mnuHeThong = new javax.swing.JMenu();
+        mniDangNhap = new javax.swing.JMenuItem();
+        mniDangXuat = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem10 = new javax.swing.JMenuItem();
+        mniDoiMatKhau = new javax.swing.JMenuItem();
         jSeparator5 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
+        mniThoat = new javax.swing.JMenuItem();
+        mnuQuanLy = new javax.swing.JMenu();
+        mniSanPham = new javax.swing.JMenuItem();
+        mniKhachHang = new javax.swing.JMenuItem();
+        mnuThongKe = new javax.swing.JMenu();
+        mniDoanhThu = new javax.swing.JMenuItem();
+        mniTongSP = new javax.swing.JMenuItem();
+        mnuTroGiup = new javax.swing.JMenu();
+        mniHuongDan = new javax.swing.JMenuItem();
+        mniGioiThieu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Hệ thống nước giải khát TIENLONG");
@@ -74,15 +74,21 @@ public class MainQLJFrame extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        lblImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/logo.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(lblImage)
+                .addGap(0, 1, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(lblImage)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -105,53 +111,53 @@ public class MainQLJFrame extends javax.swing.JFrame {
 
         jMenuBar1.setPreferredSize(new java.awt.Dimension(268, 30));
 
-        jMenu1.setText("Hệ Thống");
+        mnuHeThong.setText("Hệ Thống");
 
-        jMenuItem1.setText("Đăng nhập");
-        jMenu1.add(jMenuItem1);
+        mniDangNhap.setText("Đăng nhập");
+        mnuHeThong.add(mniDangNhap);
 
-        jMenuItem2.setText("Đăng xuất");
-        jMenu1.add(jMenuItem2);
-        jMenu1.add(jSeparator4);
+        mniDangXuat.setText("Đăng xuất");
+        mnuHeThong.add(mniDangXuat);
+        mnuHeThong.add(jSeparator4);
 
-        jMenuItem10.setText("Đổi mật khẩu");
-        jMenu1.add(jMenuItem10);
-        jMenu1.add(jSeparator5);
+        mniDoiMatKhau.setText("Đổi mật khẩu");
+        mnuHeThong.add(mniDoiMatKhau);
+        mnuHeThong.add(jSeparator5);
 
-        jMenuItem3.setText("Thoát");
-        jMenu1.add(jMenuItem3);
+        mniThoat.setText("Thoát");
+        mnuHeThong.add(mniThoat);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(mnuHeThong);
 
-        jMenu2.setText("Quản Lý");
+        mnuQuanLy.setText("Quản Lý");
 
-        jMenuItem4.setText("Sản Phẩm");
-        jMenu2.add(jMenuItem4);
+        mniSanPham.setText("Sản Phẩm");
+        mnuQuanLy.add(mniSanPham);
 
-        jMenuItem5.setText("Khách hàng");
-        jMenu2.add(jMenuItem5);
+        mniKhachHang.setText("Khách hàng");
+        mnuQuanLy.add(mniKhachHang);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(mnuQuanLy);
 
-        jMenu3.setText("Thống kê");
+        mnuThongKe.setText("Thống kê");
 
-        jMenuItem6.setText("Doanh thu");
-        jMenu3.add(jMenuItem6);
+        mniDoanhThu.setText("Doanh thu");
+        mnuThongKe.add(mniDoanhThu);
 
-        jMenuItem7.setText("Tổng sản phẩm");
-        jMenu3.add(jMenuItem7);
+        mniTongSP.setText("Tổng sản phẩm");
+        mnuThongKe.add(mniTongSP);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(mnuThongKe);
 
-        jMenu4.setText("Trợ giúp");
+        mnuTroGiup.setText("Trợ giúp");
 
-        jMenuItem8.setText("Hướng dẫn");
-        jMenu4.add(jMenuItem8);
+        mniHuongDan.setText("Hướng dẫn");
+        mnuTroGiup.add(mniHuongDan);
 
-        jMenuItem9.setText("Giới thiệu");
-        jMenu4.add(jMenuItem9);
+        mniGioiThieu.setText("Giới thiệu");
+        mnuTroGiup.add(mniGioiThieu);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(mnuTroGiup);
 
         setJMenuBar(jMenuBar1);
 
@@ -195,28 +201,28 @@ public class MainQLJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JPopupMenu.Separator jSeparator5;
     private javax.swing.JLabel lblDongHo;
+    private javax.swing.JLabel lblImage;
     private javax.swing.JLabel lblText;
+    private javax.swing.JMenuItem mniDangNhap;
+    private javax.swing.JMenuItem mniDangXuat;
+    private javax.swing.JMenuItem mniDoanhThu;
+    private javax.swing.JMenuItem mniDoiMatKhau;
+    private javax.swing.JMenuItem mniGioiThieu;
+    private javax.swing.JMenuItem mniHuongDan;
+    private javax.swing.JMenuItem mniKhachHang;
+    private javax.swing.JMenuItem mniSanPham;
+    private javax.swing.JMenuItem mniThoat;
+    private javax.swing.JMenuItem mniTongSP;
+    private javax.swing.JMenu mnuHeThong;
+    private javax.swing.JMenu mnuQuanLy;
+    private javax.swing.JMenu mnuThongKe;
+    private javax.swing.JMenu mnuTroGiup;
     // End of variables declaration//GEN-END:variables
 }
