@@ -10,21 +10,26 @@ package edu.poly.model;
  * @author hoang
  */
 public class SanPham {
+
     private String masp;
     private String tensp;
     private float giasp;
-    private String loaisp;
+    private int soluongsp;
     private String hinhsp;
+    private String maloai;
+    private String maql;
 
     public SanPham() {
     }
 
-    public SanPham(String masp, String tensp, float giasp, String loaisp, String hinhsp) {
+    public SanPham(String masp, String tensp, float giasp, int soluongsp, String hinhsp, String maloai, String maql) {
         this.masp = masp;
         this.tensp = tensp;
         this.giasp = giasp;
-        this.loaisp = loaisp;
+        this.soluongsp = soluongsp;
         this.hinhsp = hinhsp;
+        this.maloai = maloai;
+        this.maql = maql;
     }
 
     public String getMasp() {
@@ -51,12 +56,12 @@ public class SanPham {
         this.giasp = giasp;
     }
 
-    public String getLoaisp() {
-        return loaisp;
+    public int getSoluongsp() {
+        return soluongsp;
     }
 
-    public void setLoaisp(String loaisp) {
-        this.loaisp = loaisp;
+    public void setSoluongsp(int soluongsp) {
+        this.soluongsp = soluongsp;
     }
 
     public String getHinhsp() {
@@ -66,5 +71,22 @@ public class SanPham {
     public void setHinhsp(String hinhsp) {
         this.hinhsp = hinhsp;
     }
+
+    public String getMaloai() {
+        return maloai;
+    }
+
+    public void setMaloai(String maloai) {
+        this.maloai = maloai;
+    }
+
+    public String getMaql() {
+        return maql;
+    }
+
+    public void setMaql(String maql) {
+        this.maql = maql;
+    }
+
     
 }

@@ -5,6 +5,11 @@
  */
 package edu.poly.view;
 
+import edu.poly.dao.QuanLyDAO;
+import edu.poly.helper.DialogHelper;
+import edu.poly.helper.ShareHelper;
+import edu.poly.model.QuanLy;
+
 /**
  *
  * @author hoang
@@ -18,7 +23,43 @@ public class DangNhapJFrame extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
     }
+    QuanLyDAO dao=new QuanLyDAO();
+    
+void login() {
+        String maql = txtTaiKhoan.getText();
+        String matKhau = new String(txtMatkhau.getPassword());
+        try {
+            QuanLy quanLy = dao.findById(maql);
+            if (quanLy != null) {
+                String matKhau2 = quanLy.getMatkhau();
+                if (matKhau.equals(matKhau2)) {
+                    ShareHelper.USER = quanLy;
+                    DialogHelper.alert(this, "Đăng nhập thành công!");
+                    this.dispose();
+                } else {
+                    DialogHelper.alert(this, "Sai mật khẩu!");
+                }
+            } else {
+                DialogHelper.alert(this, "Sai tên đăng nhập!");
+            }
+        } catch (Exception e) {
+            DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!");
+        }
+    }
 
+    void exit() {
+        if (DialogHelper.confirm(this, "Bạn có muốn thoát khỏi ứng dụng không?")) {
+            System.exit(0);
+        }
+    }
+
+    public boolean isvalid() {
+        if (txtTaiKhoan.getText().length() == 0) {
+            DialogHelper.alert(this, "Vui lòng nhập tên đăng nhập !");
+            return false;
+        }
+        return true;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -84,12 +125,22 @@ public class DangNhapJFrame extends javax.swing.JFrame {
         btnDangNhap.setForeground(new java.awt.Color(255, 255, 255));
         btnDangNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/Login-icon.png"))); // NOI18N
         btnDangNhap.setText("Đăng Nhập");
+        btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDangNhapActionPerformed(evt);
+            }
+        });
 
         btnThoat.setBackground(new java.awt.Color(255, 0, 0));
         btnThoat.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnThoat.setForeground(new java.awt.Color(255, 255, 255));
         btnThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/Cancel_DN.png"))); // NOI18N
         btnThoat.setText("Thoát");
+        btnThoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThoatActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -146,6 +197,18 @@ public class DangNhapJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
+        // TODO add your handling code here:
+        exit();
+    }//GEN-LAST:event_btnThoatActionPerformed
+
+    private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
+        // TODO add your handling code here:
+         if (this.isvalid()) {
+            this.login();
+        }
+    }//GEN-LAST:event_btnDangNhapActionPerformed
 
     /**
      * @param args the command line arguments
