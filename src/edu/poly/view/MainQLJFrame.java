@@ -113,17 +113,21 @@ public class MainQLJFrame extends javax.swing.JFrame {
 
         mnuHeThong.setText("Hệ Thống");
 
+        mniDangNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/login.png"))); // NOI18N
         mniDangNhap.setText("Đăng nhập");
         mnuHeThong.add(mniDangNhap);
 
+        mniDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/logout.png"))); // NOI18N
         mniDangXuat.setText("Đăng xuất");
         mnuHeThong.add(mniDangXuat);
         mnuHeThong.add(jSeparator4);
 
+        mniDoiMatKhau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/password.png"))); // NOI18N
         mniDoiMatKhau.setText("Đổi mật khẩu");
         mnuHeThong.add(mniDoiMatKhau);
         mnuHeThong.add(jSeparator5);
 
+        mniThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/exit.png"))); // NOI18N
         mniThoat.setText("Thoát");
         mnuHeThong.add(mniThoat);
 
@@ -131,9 +135,11 @@ public class MainQLJFrame extends javax.swing.JFrame {
 
         mnuQuanLy.setText("Quản Lý");
 
+        mniSanPham.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/product.png"))); // NOI18N
         mniSanPham.setText("Sản Phẩm");
         mnuQuanLy.add(mniSanPham);
 
+        mniKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/khachhang.png"))); // NOI18N
         mniKhachHang.setText("Khách hàng");
         mnuQuanLy.add(mniKhachHang);
 
@@ -141,9 +147,11 @@ public class MainQLJFrame extends javax.swing.JFrame {
 
         mnuThongKe.setText("Thống kê");
 
+        mniDoanhThu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/doanhthu.png"))); // NOI18N
         mniDoanhThu.setText("Doanh thu");
         mnuThongKe.add(mniDoanhThu);
 
+        mniTongSP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/sumproject.png"))); // NOI18N
         mniTongSP.setText("Tổng sản phẩm");
         mnuThongKe.add(mniTongSP);
 
@@ -151,9 +159,11 @@ public class MainQLJFrame extends javax.swing.JFrame {
 
         mnuTroGiup.setText("Trợ giúp");
 
+        mniHuongDan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/guide.png"))); // NOI18N
         mniHuongDan.setText("Hướng dẫn");
         mnuTroGiup.add(mniHuongDan);
 
+        mniGioiThieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/intro.png"))); // NOI18N
         mniGioiThieu.setText("Giới thiệu");
         mnuTroGiup.add(mniGioiThieu);
 
