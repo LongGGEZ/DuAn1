@@ -23,9 +23,9 @@ public class DangNhapJFrame extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
     }
-    QuanLyDAO dao=new QuanLyDAO();
-    
-void login() {
+    QuanLyDAO dao = new QuanLyDAO();
+
+    void login() {
         String maql = txtTaiKhoan.getText();
         String matKhau = new String(txtMatkhau.getPassword());
         try {
@@ -60,6 +60,7 @@ void login() {
         }
         return true;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -205,7 +206,7 @@ void login() {
 
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
         // TODO add your handling code here:
-         if (this.isvalid()) {
+        if (this.isvalid()) {
             this.login();
         }
     }//GEN-LAST:event_btnDangNhapActionPerformed
