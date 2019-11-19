@@ -5,6 +5,7 @@
  */
 package edu.poly.view;
 
+import edu.poly.helper.ShareHelper;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
@@ -22,8 +23,14 @@ public class MainQLJFrame extends javax.swing.JFrame {
      */
     public MainQLJFrame() {
         initComponents();
+        init();
+    }
+    
+    void init() {
+        setSize(1000, 600);
+        setIconImage(ShareHelper.APP_ICON);
         setLocationRelativeTo(null);
-        
+
         new Timer(1000, new ActionListener() {
             SimpleDateFormat format = new SimpleDateFormat("hh:mm:ss a");
 
@@ -32,9 +39,16 @@ public class MainQLJFrame extends javax.swing.JFrame {
                 lblDongHo.setText(format.format(new Date()));
             }
         }).start();
-    
+        this.openWelcome();
+        this.openLogin();
+    }
+    void openLogin() {
+        new DangNhapJDialog(this, true).setVisible(true);
     }
 
+    void openWelcome() {
+        new LoadingJDialog(this, true).setVisible(true);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -74,21 +88,27 @@ public class MainQLJFrame extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        lblImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/logo.png"))); // NOI18N
+        lblImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/logo_1.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(lblImage)
-                .addGap(0, 1, Short.MAX_VALUE))
+            .addGap(0, 512, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(lblImage)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(lblImage)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(lblImage)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
