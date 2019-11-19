@@ -20,12 +20,12 @@ public class QuanLyDAO {
     }
 
     public void update(QuanLy model) {
-        String sql = "UPDATE QuanLy SET tenql=?, matkhau=?, WHERE maql=?";
+        String sql = "UPDATE QuanLy SET tenql=?, matkhau=? WHERE maql=?";
         JdbcHelper.executeUpdate(sql, model.getTenql(), model.getMatkhau(), model.getMaql());
     }
 
     public void delete(String MaNV) {
-        String sql = "DELETE FROM NhanVien WHERE maql=?";
+        String sql = "DELETE FROM QuanLy WHERE maql=?";
         JdbcHelper.executeUpdate(sql, MaNV);
     }
 
