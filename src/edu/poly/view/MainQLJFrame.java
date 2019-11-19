@@ -39,8 +39,8 @@ public class MainQLJFrame extends javax.swing.JFrame {
                 lblDongHo.setText(format.format(new Date()));
             }
         }).start();
-        this.openWelcome();
-        this.openLogin();
+//        this.openWelcome();
+//        this.openLogin();
     }
     void openLogin() {
         new DangNhapJDialog(this, true).setVisible(true);
