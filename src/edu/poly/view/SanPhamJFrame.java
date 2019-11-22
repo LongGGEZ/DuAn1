@@ -300,18 +300,14 @@ public class SanPhamJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(pnlCapNhatLayout.createSequentialGroup()
-                        .addComponent(lblLoaitSP)
-                        .addGap(18, 18, 18)
-                        .addComponent(cboLoaiSP, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCapNhatLayout.createSequentialGroup()
                         .addComponent(lblTenSP)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtTenSP))
                     .addGroup(pnlCapNhatLayout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addComponent(lblMaSP)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtMaSP, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtMaSP, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlCapNhatLayout.createSequentialGroup()
                         .addGap(100, 100, 100)
                         .addComponent(btnInsert)
@@ -323,12 +319,16 @@ public class SanPhamJFrame extends javax.swing.JFrame {
                         .addComponent(btnMoi)
                         .addGap(12, 12, 12))
                     .addGroup(pnlCapNhatLayout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblGiaSP)
-                            .addComponent(jLabel1))
-                        .addGap(18, 18, 18)
                         .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlCapNhatLayout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblGiaSP)
+                                    .addComponent(jLabel1)))
+                            .addComponent(lblLoaitSP))
+                        .addGap(11, 11, 11)
+                        .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cboLoaiSP, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtGiaSP)
                             .addComponent(txtSoLuongSP))))
                 .addGap(30, 30, 30)
@@ -384,7 +384,7 @@ public class SanPhamJFrame extends javax.swing.JFrame {
                     .addComponent(btnDelete)
                     .addComponent(btnInsert)
                     .addComponent(btnLast))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         tabs.addTab("Cập Nhật", pnlCapNhat);
@@ -417,7 +417,7 @@ public class SanPhamJFrame extends javax.swing.JFrame {
         );
         pnlDanhSachLayout.setVerticalGroup(
             pnlDanhSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
         );
 
         tabs.addTab("Danh Sách", pnlDanhSach);
@@ -434,8 +434,7 @@ public class SanPhamJFrame extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tabs, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

@@ -5,10 +5,10 @@
  */
 package edu.poly.view;
 
-import edu.poly.dao.QuanLyDAO;
+import edu.poly.dao.NhanVienDAO;
 import edu.poly.helper.DialogHelper;
 import edu.poly.helper.ShareHelper;
-import edu.poly.model.QuanLy;
+import edu.poly.model.NhanVien;
 
 /**
  *
@@ -24,17 +24,17 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
     }
-    QuanLyDAO dao = new QuanLyDAO();
+    NhanVienDAO dao = new NhanVienDAO();
 
     void login() {
-        String maql = txtTaiKhoan.getText();
+        String manv = txtTaiKhoan.getText();
         String matKhau = new String(txtMatkhau.getPassword());
         try {
-            QuanLy quanLy = dao.findById(maql);
-            if (quanLy != null) {
-                String matKhau2 = quanLy.getMatkhau();
+            NhanVien nhanvien = dao.findById(manv);
+            if (nhanvien != null) {
+                String matKhau2 = nhanvien.getMatkhau();
                 if (matKhau.equals(matKhau2)) {
-                    ShareHelper.USER = quanLy;
+                    ShareHelper.USER = nhanvien;
                     DialogHelper.alert(this, "Đăng nhập thành công!");
                     this.dispose();
                 } else {

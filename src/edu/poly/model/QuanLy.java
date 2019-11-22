@@ -7,44 +7,45 @@ package edu.poly.model;
 
 /**
  *
- * @author hoang
+ * @author Admin
  */
 public class QuanLy {
-    private String maql;
-    private String tenql;
-    private String matkhau;
+    private String maQuanLy;
+    private String tenQuanLy;
+    private String matKhau;
 
     public QuanLy() {
     }
 
-    public QuanLy(String maql, String tenql, String matkhau) {
-        this.maql = maql;
-        this.tenql = tenql;
-        this.matkhau = matkhau;
+    public QuanLy(String maQuanLy, String tenQuanLy, String matKhau) {
+        this.maQuanLy = maQuanLy;
+        this.tenQuanLy = tenQuanLy;
+        this.matKhau = matKhau;
     }
 
-    public String getMaql() {
-        return maql;
+    public String getMaQuanLy() {
+        return maQuanLy;
     }
 
-    public void setMaql(String maql) {
-        this.maql = maql;
+    public void setMaQuanLy(String maQuanLy) {
+        this.maQuanLy = maQuanLy;
     }
 
-    public String getTenql() {
-        return tenql;
+    public String getTenQuanLy() {
+        return tenQuanLy;
     }
 
-    public void setTenql(String tenql) {
-        this.tenql = tenql;
+    public void setTenQuanLy(String tenQuanLy) {
+        this.tenQuanLy = tenQuanLy;
     }
 
-    public String getMatkhau() {
-        return matkhau;
+    public String getMatKhau() {
+        return matKhau;
     }
 
-    public void setMatkhau(String matkhau) {
-        this.matkhau = matkhau;
+    public void setMatKhau(String matKhau) {
+        this.matKhau = matKhau;
     }
+    
     
 }

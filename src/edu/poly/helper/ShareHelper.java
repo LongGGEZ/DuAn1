@@ -1,7 +1,7 @@
 package edu.poly.helper;
 
 
-import edu.poly.model.QuanLy;
+import edu.poly.model.NhanVien;
 import java.awt.Image;
 import java.io.File;
 import java.nio.file.Files;
@@ -38,7 +38,7 @@ public class ShareHelper {
          return new ImageIcon(path.getAbsolutePath()); 
          
      }  
-      public static QuanLy USER = null;
+      public static NhanVien USER = null;
        public static void logoff() { 
            ShareHelper.USER = null;
        }

@@ -12,16 +12,26 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ * @author Admin
+ */
 public class QuanLyDAO {
-
     public void insert(QuanLy model) {
         String sql = "INSERT INTO QuanLy (maql, tenql, matkhau) VALUES (?, ?, ?)";
-        JdbcHelper.executeUpdate(sql, model.getMaql(), model.getTenql(), model.getMatkhau());
+        JdbcHelper.executeUpdate(sql,
+                model.getMaQuanLy(),
+                model.getTenQuanLy(),
+                model.getMatKhau());  
     }
 
     public void update(QuanLy model) {
         String sql = "UPDATE QuanLy SET tenql=?, matkhau=? WHERE maql=?";
-        JdbcHelper.executeUpdate(sql, model.getTenql(), model.getMatkhau(), model.getMaql());
+        JdbcHelper.executeUpdate(sql,
+                model.getTenQuanLy(),
+                model.getMatKhau(),
+                model.getMaQuanLy());
+
     }
 
     public void delete(String MaNV) {
@@ -34,9 +44,9 @@ public class QuanLyDAO {
         return select(sql);
     }
 
-    public QuanLy findById(String maql) {
+    public QuanLy findById(String manv) {
         String sql = "SELECT * FROM QuanLy WHERE maql=?";
-        List<QuanLy> list = select(sql, maql);
+        List<QuanLy> list = select(sql, manv);
         return list.size() > 0 ? list.get(0) : null;
     }
 
@@ -61,10 +71,9 @@ public class QuanLyDAO {
 
     private QuanLy readFromResultSet(ResultSet rs) throws SQLException {
         QuanLy model = new QuanLy();
-        model.setMaql(rs.getString("maql"));
-        model.setTenql(rs.getString("tenql"));
-        model.setMatkhau(rs.getString("matkhau"));
+        model.setMaQuanLy(rs.getString("maql"));
+        model.setTenQuanLy(rs.getString("tenql"));
+        model.setMatKhau(rs.getString("matkhau"));
         return model;
     }
 }
-
