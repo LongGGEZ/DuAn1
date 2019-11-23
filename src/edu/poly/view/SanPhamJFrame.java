@@ -5,12 +5,15 @@
  */
 package edu.poly.view;
 
+import edu.poly.dao.LoaiSanPhamDAO;
 import edu.poly.dao.SanPhamDAO;
 import edu.poly.helper.DialogHelper;
 import edu.poly.helper.ShareHelper;
+import edu.poly.model.LoaiSanPham;
 import edu.poly.model.SanPham;
 import java.io.File;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
 
@@ -30,7 +33,7 @@ public class SanPhamJFrame extends javax.swing.JFrame {
     }
     int index = 0;
     SanPhamDAO dao = new SanPhamDAO();
-//    LoaiSPDAO lsp=new LoaiSPDAO();
+   LoaiSanPhamDAO lspdao=new LoaiSanPhamDAO();
 
     void load() {
         DefaultTableModel model = (DefaultTableModel) tblSanPham.getModel();
@@ -104,8 +107,8 @@ public class SanPhamJFrame extends javax.swing.JFrame {
 
     void edit() {
         try {
-            String macd = (String) tblSanPham.getValueAt(this.index, 0);
-            SanPham model = dao.findById(macd);
+            String masp = (String) tblSanPham.getValueAt(this.index, 0);
+            SanPham model = dao.findById(masp);
             if (model != null) {
                 this.setModel(model);
                 this.setStatus(false);
@@ -120,7 +123,11 @@ public class SanPhamJFrame extends javax.swing.JFrame {
         txtTenSP.setText(model.getTensp());
         txtGiaSP.setText(String.valueOf(model.getGiasp()));
         txtSoLuongSP.setText(String.valueOf(model.getSoluongsp()));
-        cboLoaiSP.setSelectedItem(model.getMaloai());
+        
+        
+        cboLoaiSP.setToolTipText(String.valueOf(model.getMasp()));
+        cboLoaiSP.setSelectedItem(lspdao.findById(model.getMaloai()));
+        
         lblHinh.setToolTipText(model.getHinhsp());
         if (model.getHinhsp() != null) {
             lblHinh.setIcon(ShareHelper.readLogo(model.getHinhsp()));
@@ -129,10 +136,12 @@ public class SanPhamJFrame extends javax.swing.JFrame {
 
     SanPham getModel() {
         SanPham model = new SanPham();
+        LoaiSP chuyenDe = (LoaiSP) cboLoaiSP.getSelectedItem();
         model.setMasp(txtMaSP.getText());
         model.setTensp(txtTenSP.getText());
         model.setGiasp(Float.valueOf(txtGiaSP.getText()));
         model.setSoluongsp(Integer.valueOf(txtSoLuongSP.getText()));
+        model.setMaloai(cboLoaiSP.getToolTipText());
         model.setHinhsp(lblHinh.getToolTipText());
         return model;
     }
@@ -142,13 +151,25 @@ public class SanPhamJFrame extends javax.swing.JFrame {
         btnInsert.setEnabled(insertable);
         btnUpdate.setEnabled(!insertable);
         btnDelete.setEnabled(!insertable);
-
         boolean first = this.index > 0;
         boolean last = this.index < tblSanPham.getRowCount() - 1;
         btnFirst.setEnabled(!insertable && first);
         btnPrev.setEnabled(!insertable && first);
         btnLast.setEnabled(!insertable && last);
         btnNext.setEnabled(!insertable && last);
+    }
+   
+    void fillComboBox() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboLoaiSP.getModel();
+        model.removeAllElements();
+        try {
+            List<LoaiSanPham> list = lspdao.select();
+            for (LoaiSanPham lsp : list) {
+                model.addElement(lsp);
+            }
+        } catch (Exception e) {
+            DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!");
+        }
     }
 
     void selectImage() {
@@ -276,6 +297,11 @@ public class SanPhamJFrame extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lblHinh.setBackground(new java.awt.Color(255, 255, 255));
+        lblHinh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblHinhMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -393,13 +419,13 @@ public class SanPhamJFrame extends javax.swing.JFrame {
 
         tblSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Mã sản phẩm", "Tên sản phẩm", "Giá sản phẩm", "Số lượng sản phẩm", "Loại sản phẩm", "Hình sản phẩm"
             }
         ));
         tblSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -434,7 +460,7 @@ public class SanPhamJFrame extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(tabs, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+                .addComponent(tabs)
                 .addContainerGap())
         );
 
@@ -479,6 +505,8 @@ public class SanPhamJFrame extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
+        this.fillComboBox();
+        this.clear();
         this.load();
         this.setStatus(true);
     }//GEN-LAST:event_formWindowOpened
@@ -493,6 +521,11 @@ public class SanPhamJFrame extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_tblSanPhamMouseClicked
+
+    private void lblHinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinhMouseClicked
+        // TODO add your handling code here:
+        selectImage();
+    }//GEN-LAST:event_lblHinhMouseClicked
 
     /**
      * @param args the command line arguments

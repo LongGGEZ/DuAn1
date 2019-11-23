@@ -5,7 +5,6 @@
  */
 package edu.poly.dao;
 
-
 import edu.poly.helper.JdbcHelper;
 import edu.poly.model.SanPham;
 import java.sql.ResultSet;
@@ -16,13 +15,13 @@ import java.util.List;
 public class SanPhamDAO {
 
     public void insert(SanPham model) {
-        String sql = "INSERT INTO SanPham (masp, tensp, giasp, soluongsp, hinhsp, maloai,maql) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        JdbcHelper.executeUpdate(sql, model.getTensp(), model.getGiasp(), model.getSoluongsp(), model.getHinhsp(), model.getMaloai(),model.getMaql());
+        String sql = "INSERT INTO SanPham (masp, tensp, giasp, soluongsp, hinhanhsp, maloai) VALUES (?, ?, ?, ?, ?, ?)";
+        JdbcHelper.executeUpdate(sql, model.getMasp(), model.getTensp(), model.getGiasp(), model.getSoluongsp(), model.getHinhsp(), model.getMaloai());
     }
 
     public void update(SanPham model) {
-        String sql = "UPDATE SanPham SET tensp=?, giasp=?, soluongsp=?, hinhsp=?,maloai=? maql=? WHERE masp=?";
-        JdbcHelper.executeUpdate(sql, model.getTensp(), model.getGiasp(), model.getSoluongsp(), model.getHinhsp(), model.getMaloai(),model.getMaql());
+        String sql = "UPDATE SanPham SET tensp=?, giasp=?, soluongsp=?, hinhanhsp=?, maloai=? WHERE masp=?";
+        JdbcHelper.executeUpdate(sql, model.getTensp(), model.getGiasp(), model.getSoluongsp(), model.getHinhsp(), model.getMaloai(), model.getMasp());
     }
 
     public void delete(String masp) {
@@ -68,8 +67,6 @@ public class SanPhamDAO {
         model.setSoluongsp(rs.getInt("soluongsp"));
         model.setHinhsp(rs.getString("hinhsp"));
         model.setMaloai(rs.getString("maloai"));
-        model.setMaql(rs.getString("maql"));
         return model;
     }
 }
-

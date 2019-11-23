@@ -16,18 +16,18 @@ import javax.swing.Timer;
  *
  * @author hoang
  */
-public class MainQLJFrame extends javax.swing.JFrame {
+public class MainJFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form MainQL
      */
-    public MainQLJFrame() {
+    public MainJFrame() {
         initComponents();
         init();
     }
     
     void init() {
-        setSize(1000, 600);
+        setSize(1280, 720);
         setIconImage(ShareHelper.APP_ICON);
         setLocationRelativeTo(null);
 
@@ -39,8 +39,8 @@ public class MainQLJFrame extends javax.swing.JFrame {
                 lblDongHo.setText(format.format(new Date()));
             }
         }).start();
-//        this.openWelcome();
-//        this.openLogin();
+        this.openWelcome();
+        this.openLogin();
     }
     void openLogin() {
         new DangNhapJDialog(this, true).setVisible(true);
@@ -75,6 +75,7 @@ public class MainQLJFrame extends javax.swing.JFrame {
         mnuQuanLy = new javax.swing.JMenu();
         mniSanPham = new javax.swing.JMenuItem();
         mniKhachHang = new javax.swing.JMenuItem();
+        mniNhanVien = new javax.swing.JMenuItem();
         mnuThongKe = new javax.swing.JMenu();
         mniDoanhThu = new javax.swing.JMenuItem();
         mniTongSP = new javax.swing.JMenuItem();
@@ -156,12 +157,15 @@ public class MainQLJFrame extends javax.swing.JFrame {
         mnuQuanLy.setText("Quản Lý");
 
         mniSanPham.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/product.png"))); // NOI18N
-        mniSanPham.setText("Sản Phẩm");
+        mniSanPham.setText("Sản phẩm");
         mnuQuanLy.add(mniSanPham);
 
         mniKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/khachhang.png"))); // NOI18N
         mniKhachHang.setText("Khách hàng");
         mnuQuanLy.add(mniKhachHang);
+
+        mniNhanVien.setText("Nhân viên");
+        mnuQuanLy.add(mniNhanVien);
 
         jMenuBar1.add(mnuQuanLy);
 
@@ -211,21 +215,23 @@ public class MainQLJFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainQLJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainQLJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainQLJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainQLJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainQLJFrame().setVisible(true);
+                new MainJFrame().setVisible(true);
             }
         });
     }
@@ -247,6 +253,7 @@ public class MainQLJFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniGioiThieu;
     private javax.swing.JMenuItem mniHuongDan;
     private javax.swing.JMenuItem mniKhachHang;
+    private javax.swing.JMenuItem mniNhanVien;
     private javax.swing.JMenuItem mniSanPham;
     private javax.swing.JMenuItem mniThoat;
     private javax.swing.JMenuItem mniTongSP;

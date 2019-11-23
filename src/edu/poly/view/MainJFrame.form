@@ -62,7 +62,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/edu/poly/images/product.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="S&#x1ea3;n Ph&#x1ea9;m"/>
+                <Property name="text" type="java.lang.String" value="S&#x1ea3;n ph&#x1ea9;m"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mniKhachHang">
@@ -71,6 +71,11 @@
                   <Image iconType="3" name="/edu/poly/images/khachhang.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Kh&#xe1;ch h&#xe0;ng"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mniNhanVien">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Nh&#xe2;n vi&#xea;n"/>
               </Properties>
             </MenuItem>
           </SubComponents>
