@@ -33,7 +33,7 @@ public class SanPhamJFrame extends javax.swing.JFrame {
     }
     int index = 0;
     SanPhamDAO dao = new SanPhamDAO();
-   LoaiSanPhamDAO lspdao=new LoaiSanPhamDAO();
+    LoaiSanPhamDAO lspdao = new LoaiSanPhamDAO();
 
     void load() {
         DefaultTableModel model = (DefaultTableModel) tblSanPham.getModel();
@@ -123,11 +123,10 @@ public class SanPhamJFrame extends javax.swing.JFrame {
         txtTenSP.setText(model.getTensp());
         txtGiaSP.setText(String.valueOf(model.getGiasp()));
         txtSoLuongSP.setText(String.valueOf(model.getSoluongsp()));
-        
-        
+
         cboLoaiSP.setToolTipText(String.valueOf(model.getMasp()));
         cboLoaiSP.setSelectedItem(lspdao.findById(model.getMaloai()));
-        
+
         lblHinh.setToolTipText(model.getHinhsp());
         if (model.getHinhsp() != null) {
             lblHinh.setIcon(ShareHelper.readLogo(model.getHinhsp()));
@@ -158,7 +157,7 @@ public class SanPhamJFrame extends javax.swing.JFrame {
         btnLast.setEnabled(!insertable && last);
         btnNext.setEnabled(!insertable && last);
     }
-   
+
     void fillComboBox() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboLoaiSP.getModel();
         model.removeAllElements();
@@ -183,6 +182,7 @@ public class SanPhamJFrame extends javax.swing.JFrame {
             }
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -219,6 +219,7 @@ public class SanPhamJFrame extends javax.swing.JFrame {
         tblSanPham = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("CÔNG TY NƯỚC GIẢI KHÁT TIENLONG");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -454,7 +455,7 @@ public class SanPhamJFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 670, Short.MAX_VALUE)
+                .addComponent(tabs)
                 .addContainerGap())
         );
         layout.setVerticalGroup(

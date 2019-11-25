@@ -58,6 +58,14 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        toolBar = new javax.swing.JToolBar();
+        btnSanPham = new javax.swing.JButton();
+        btnKhachHang = new javax.swing.JButton();
+        btnNhanVien = new javax.swing.JButton();
+        btnDoanhThu = new javax.swing.JButton();
+        btnTongSP = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JToolBar.Separator();
+        btnDangXuat = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         lblImage = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -84,33 +92,62 @@ public class MainJFrame extends javax.swing.JFrame {
         mniGioiThieu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Hệ thống nước giải khát TIENLONG");
+        setTitle("CÔNG TY NƯỚC GIẢI KHÁT TIENLONG");
         setBackground(new java.awt.Color(255, 255, 255));
 
+        toolBar.setRollover(true);
+
+        btnSanPham.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/product.png"))); // NOI18N
+        btnSanPham.setText("Sản Phẩm");
+        btnSanPham.setFocusable(false);
+        btnSanPham.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnSanPham.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBar.add(btnSanPham);
+
+        btnKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/khachhang.png"))); // NOI18N
+        btnKhachHang.setText("Khách Hàng");
+        btnKhachHang.setFocusable(false);
+        btnKhachHang.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnKhachHang.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBar.add(btnKhachHang);
+
+        btnNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/nhanvien.png"))); // NOI18N
+        btnNhanVien.setText("Nhân Viên");
+        btnNhanVien.setFocusable(false);
+        btnNhanVien.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnNhanVien.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBar.add(btnNhanVien);
+
+        btnDoanhThu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/doanhthu.png"))); // NOI18N
+        btnDoanhThu.setText("Doanh Thu");
+        btnDoanhThu.setFocusable(false);
+        btnDoanhThu.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnDoanhThu.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBar.add(btnDoanhThu);
+
+        btnTongSP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/sumproject.png"))); // NOI18N
+        btnTongSP.setText("Tổng SP");
+        btnTongSP.setFocusable(false);
+        btnTongSP.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnTongSP.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBar.add(btnTongSP);
+        toolBar.add(jSeparator2);
+
+        btnDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/logout.png"))); // NOI18N
+        btnDangXuat.setText("Đăng Xuất");
+        btnDangXuat.setFocusable(false);
+        btnDangXuat.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnDangXuat.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBar.add(btnDangXuat);
+
+        getContentPane().add(toolBar, java.awt.BorderLayout.PAGE_START);
+
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new java.awt.BorderLayout());
 
+        lblImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/logo_1.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 512, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(lblImage)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(lblImage)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        jPanel1.add(lblImage, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -164,6 +201,7 @@ public class MainJFrame extends javax.swing.JFrame {
         mniKhachHang.setText("Khách hàng");
         mnuQuanLy.add(mniKhachHang);
 
+        mniNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/nhanvien.png"))); // NOI18N
         mniNhanVien.setText("Nhân viên");
         mnuQuanLy.add(mniNhanVien);
 
@@ -237,10 +275,17 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDangXuat;
+    private javax.swing.JButton btnDoanhThu;
+    private javax.swing.JButton btnKhachHang;
+    private javax.swing.JButton btnNhanVien;
+    private javax.swing.JButton btnSanPham;
+    private javax.swing.JButton btnTongSP;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JPopupMenu.Separator jSeparator5;
     private javax.swing.JLabel lblDongHo;
@@ -261,5 +306,6 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JMenu mnuQuanLy;
     private javax.swing.JMenu mnuThongKe;
     private javax.swing.JMenu mnuTroGiup;
+    private javax.swing.JToolBar toolBar;
     // End of variables declaration//GEN-END:variables
 }
