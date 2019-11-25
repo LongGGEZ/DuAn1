@@ -30,6 +30,7 @@ public class SanPhamJFrame extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         fileChooser = new JFileChooser();
+        
     }
     int index = 0;
     SanPhamDAO dao = new SanPhamDAO();
@@ -48,6 +49,7 @@ public class SanPhamJFrame extends javax.swing.JFrame {
                     sp.getSoluongsp(),
                     sp.getMaloai(),
                     sp.getHinhsp()
+                    
                 };
                 model.addRow(row);
             }
@@ -123,10 +125,9 @@ public class SanPhamJFrame extends javax.swing.JFrame {
         txtTenSP.setText(model.getTensp());
         txtGiaSP.setText(String.valueOf(model.getGiasp()));
         txtSoLuongSP.setText(String.valueOf(model.getSoluongsp()));
-        
-        
-        cboLoaiSP.setToolTipText(String.valueOf(model.getMasp()));
-        cboLoaiSP.setSelectedItem(lspdao.findById(model.getMaloai()));
+               
+        cboLoaiSP.setToolTipText(String.valueOf(model.getMaloai()));
+        cboLoaiSP.setSelectedItem(lspdao.findById(model.getMasp() ));
         
         lblHinh.setToolTipText(model.getHinhsp());
         if (model.getHinhsp() != null) {
@@ -135,8 +136,7 @@ public class SanPhamJFrame extends javax.swing.JFrame {
     }
 
     SanPham getModel() {
-        SanPham model = new SanPham();
-        LoaiSP chuyenDe = (LoaiSP) cboLoaiSP.getSelectedItem();
+        SanPham model = new SanPham();  
         model.setMasp(txtMaSP.getText());
         model.setTensp(txtTenSP.getText());
         model.setGiasp(Float.valueOf(txtGiaSP.getText()));
@@ -506,7 +506,7 @@ public class SanPhamJFrame extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         this.fillComboBox();
-        this.clear();
+//        this.clear();
         this.load();
         this.setStatus(true);
     }//GEN-LAST:event_formWindowOpened
