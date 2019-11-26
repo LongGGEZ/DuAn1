@@ -40,20 +40,23 @@ public class SanPhamJFrame extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tblSanPham.getModel();
         model.setRowCount(0);
         try {
+            
             List<SanPham> list = dao.select();
             for (SanPham sp : list) {
+                
                 Object[] row = {
                     sp.getMasp(),
                     sp.getTensp(),
                     sp.getGiasp(),
                     sp.getSoluongsp(),
-                    sp.getMaloai(),
+                     sp.getMaloai(),
                     sp.getHinhsp()
                     
                 };
                 model.addRow(row);
             }
         } catch (Exception e) {
+            e.printStackTrace();
             DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!");
         }
     }
@@ -143,7 +146,8 @@ public class SanPhamJFrame extends javax.swing.JFrame {
         model.setTensp(txtTenSP.getText());
         model.setGiasp(Double.valueOf(txtGiaSP.getText()));
         model.setSoluongsp(Integer.valueOf(txtSoLuongSP.getText()));
-        model.setMaloai(cboLoaiSP.getToolTipText());
+        model.setMaloai(model.getMaloai());
+       
         model.setHinhsp(lblHinh.getToolTipText());
         return model;
     }
@@ -443,7 +447,7 @@ public class SanPhamJFrame extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Mã sản phẩm", "Tên sản phẩm", "Giá sản phẩm", "Số lượng sản phẩm", "Loại sản phẩm", "Hình sản phẩm"
+                "Mã sản phẩm", "Tên sản phẩm", "Giá sản phẩm", "Số lượng sản phẩm", "Mã loại sản phẩm", "Hình sản phẩm"
             }
         ) {
             boolean[] canEdit = new boolean [] {
