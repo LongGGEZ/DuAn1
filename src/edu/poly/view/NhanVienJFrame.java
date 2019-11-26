@@ -221,7 +221,7 @@ public class NhanVienJFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblQuanLy = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CÔNG TY NƯỚC GIẢI KHÁT TIENLONG");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -299,6 +299,11 @@ public class NhanVienJFrame extends javax.swing.JFrame {
 
         buttonGroup1.add(rdoQuanly);
         rdoQuanly.setText("Quản Lý");
+        rdoQuanly.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdoQuanlyActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(rdoPhucvu);
         rdoPhucvu.setText("Phục vụ");
@@ -310,25 +315,6 @@ public class NhanVienJFrame extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtManv, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
-                            .addComponent(lblMaNV)
-                            .addComponent(lblHoTen)
-                            .addComponent(txtHoTen)
-                            .addComponent(lblMatKhau)
-                            .addComponent(txtMatKhau))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(rdoQuanly)
-                                .addGap(8, 8, 8)
-                                .addComponent(rdoPhucvu))
-                            .addComponent(lblXacNhanMK)
-                            .addComponent(txtXacNhanMK, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnInsert)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -345,7 +331,24 @@ public class NhanVienJFrame extends javax.swing.JFrame {
                         .addComponent(btnNext)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnLast)
-                        .addGap(22, 22, 22))))
+                        .addGap(22, 22, 22))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtManv, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
+                                .addComponent(lblMaNV)
+                                .addComponent(lblHoTen)
+                                .addComponent(txtHoTen)
+                                .addComponent(lblMatKhau)
+                                .addComponent(txtMatKhau))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(rdoQuanly)
+                                .addGap(8, 8, 8)
+                                .addComponent(rdoPhucvu))
+                            .addComponent(lblXacNhanMK)
+                            .addComponent(txtXacNhanMK, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -372,21 +375,18 @@ public class NhanVienJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rdoQuanly)
                     .addComponent(rdoPhucvu))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnInsert)
-                            .addComponent(btnUpdate)
-                            .addComponent(btnDelete)
-                            .addComponent(btnClear)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnFirst)
-                            .addComponent(btnPrev)
-                            .addComponent(btnNext)
-                            .addComponent(btnLast))))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnInsert)
+                        .addComponent(btnUpdate)
+                        .addComponent(btnDelete)
+                        .addComponent(btnClear))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnFirst)
+                        .addComponent(btnPrev)
+                        .addComponent(btnNext)
+                        .addComponent(btnLast)))
                 .addContainerGap(47, Short.MAX_VALUE))
         );
 
@@ -402,7 +402,15 @@ public class NhanVienJFrame extends javax.swing.JFrame {
             new String [] {
                 "Mã Nhân Viên", "Tên Nhân viên", "Mật khẩu", "Vai trò"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblQuanLy.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblQuanLyMouseClicked(evt);
@@ -501,6 +509,10 @@ public class NhanVienJFrame extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_tblQuanLyMouseClicked
+
+    private void rdoQuanlyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoQuanlyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rdoQuanlyActionPerformed
 
     /**
      * @param args the command line arguments

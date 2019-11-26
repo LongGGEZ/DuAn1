@@ -52,6 +52,7 @@ public class LoadingJDialog extends javax.swing.JDialog {
         lblLogo = new javax.swing.JLabel();
         progressBar = new javax.swing.JProgressBar();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CÔNG TY NƯỚC GIẢI KHÁT TIENLONG");
         setUndecorated(true);
 

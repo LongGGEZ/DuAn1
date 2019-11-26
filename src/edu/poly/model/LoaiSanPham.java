@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package edu.poly.model;
 
 /**
@@ -12,6 +8,11 @@ package edu.poly.model;
 public class LoaiSanPham {
     private String maLoaiSP;
     private String tenLoaiSP;
+
+    @Override
+    public String toString() {
+        return tenLoaiSP;
+    }
 
     public LoaiSanPham() {
     }
@@ -36,7 +37,4 @@ public class LoaiSanPham {
     public void setTenLoaiSP(String tenLoaiSP) {
         this.tenLoaiSP = tenLoaiSP;
     }
-    
-    
-    
 }

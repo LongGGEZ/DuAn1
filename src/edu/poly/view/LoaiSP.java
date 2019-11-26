@@ -140,7 +140,7 @@ public class LoaiSP extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblTittle = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         tabs = new javax.swing.JTabbedPane();
         pnlThemLoai = new javax.swing.JPanel();
@@ -159,7 +159,7 @@ public class LoaiSP extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblGridView = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CÔNG TY NƯỚC GIẢI KHÁT TIENLONG");
         setAutoRequestFocus(false);
         setBackground(new java.awt.Color(204, 102, 0));
@@ -170,9 +170,9 @@ public class LoaiSP extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel1.setText("Thêm Loại Sản Phẩm");
+        lblTittle.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTittle.setForeground(new java.awt.Color(255, 102, 102));
+        lblTittle.setText("Thêm Loại Sản Phẩm");
 
         lblMaLoai.setText("Mã loại:");
 
@@ -331,7 +331,7 @@ public class LoaiSP extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(lblTittle)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(tabs)
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -340,7 +340,7 @@ public class LoaiSP extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(lblTittle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -453,11 +453,11 @@ public class LoaiSP extends javax.swing.JFrame {
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnPrev;
     private javax.swing.JButton btnUpdate;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblMaLoai;
     private javax.swing.JLabel lblTenLoai;
+    private javax.swing.JLabel lblTittle;
     private javax.swing.JPanel pnlThemLoai;
     private javax.swing.JTabbedPane tabs;
     private javax.swing.JTable tblGridView;

@@ -174,10 +174,10 @@ public class SanPhamJFrame extends javax.swing.JFrame {
         }
     }
     
-    void selectComboBox() {
-        LoaiSanPham loaiSP = (LoaiSanPham) cboLoaiSP.getSelectedItem();
-        
-    }
+//    void selectComboBox() {
+//        LoaiSanPham loaiSP = (LoaiSanPham) cboLoaiSP.getSelectedItem();
+//        
+//    }
 
     void selectImage() {
         if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
@@ -226,7 +226,7 @@ public class SanPhamJFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSanPham = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CÔNG TY NƯỚC GIẢI KHÁT TIENLONG");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -558,7 +558,7 @@ public class SanPhamJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_lblHinhMouseClicked
 
     private void cboLoaiSPPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cboLoaiSPPopupMenuWillBecomeInvisible
-        selectComboBox();        // TODO add your handling code here:
+//        selectComboBox();        // TODO add your handling code here:
     }//GEN-LAST:event_cboLoaiSPPopupMenuWillBecomeInvisible
 
     /**

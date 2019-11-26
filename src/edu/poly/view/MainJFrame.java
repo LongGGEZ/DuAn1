@@ -212,14 +212,14 @@ public class MainJFrame extends javax.swing.JFrame {
         jPanel2.setLayout(new java.awt.BorderLayout());
 
         lblDongHo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblDongHo.setForeground(new java.awt.Color(255, 51, 51));
+        lblDongHo.setForeground(new java.awt.Color(255, 102, 102));
         lblDongHo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/Alarm.png"))); // NOI18N
         lblDongHo.setText("10:55 PM");
         jPanel2.add(lblDongHo, java.awt.BorderLayout.EAST);
 
         lblText.setBackground(new java.awt.Color(255, 255, 255));
         lblText.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
-        lblText.setForeground(new java.awt.Color(255, 51, 51));
+        lblText.setForeground(new java.awt.Color(255, 102, 102));
         lblText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/javared.png"))); // NOI18N
         lblText.setText("CTY TNHH TIENLONG Nocopyright");
         jPanel2.add(lblText, java.awt.BorderLayout.CENTER);
