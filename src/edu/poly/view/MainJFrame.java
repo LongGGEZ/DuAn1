@@ -358,7 +358,7 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_mniTongSPActionPerformed
 
     private void mniGioiThieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniGioiThieuActionPerformed
-openAbout();            // TODO add your handling code here:
+        openAbout();            // TODO add your handling code here:
     }//GEN-LAST:event_mniGioiThieuActionPerformed
 
     private void mniHuongDanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniHuongDanActionPerformed
