@@ -5,6 +5,7 @@
  */
 package edu.poly.view;
 
+import edu.poly.helper.DialogHelper;
 import edu.poly.helper.ShareHelper;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,10 +31,10 @@ public class MainJFrame extends javax.swing.JFrame {
         setSize(1280, 720);
         setIconImage(ShareHelper.APP_ICON);
         setLocationRelativeTo(null);
-
+        
         new Timer(1000, new ActionListener() {
             SimpleDateFormat format = new SimpleDateFormat("hh:mm:ss a");
-
+            
             @Override
             public void actionPerformed(ActionEvent e) {
                 lblDongHo.setText(format.format(new Date()));
@@ -42,13 +43,54 @@ public class MainJFrame extends javax.swing.JFrame {
         this.openWelcome();
         this.openLogin();
     }
+
     void openLogin() {
         new DangNhapJDialog(this, true).setVisible(true);
     }
-
+    
     void openWelcome() {
         new LoadingJDialog(this, true).setVisible(true);
     }
+    
+    void logoff() {
+        ShareHelper.logoff();
+        this.openLogin();
+    }
+    
+    void exit() {
+        if (DialogHelper.confirm(this, "Bạn thực sự muốn kết thúc?")) {
+            System.exit(0);
+        }
+    }
+    
+    void openNhanVien() {
+        if (ShareHelper.authenticated()) {
+            new NhanVienJFrame().setVisible(true);
+        } else {
+            DialogHelper.alert(this, "Vui lòng đăng nhập!");
+        }
+    }
+    
+    void openSanPham() {
+        if (ShareHelper.authenticated()) {
+            new SanPhamJFrame().setVisible(true);
+        } else {
+            DialogHelper.alert(this, "Vui lòng đăng nhập!");
+        }
+    }
+    
+    void openLoaiSP() {
+        if (ShareHelper.authenticated()) {
+            new LoaiSP().setVisible(true);
+        } else {
+            DialogHelper.alert(this, "Vui lòng đăng nhập!");
+        }
+    }
+    
+    void openAbout() {
+        new AboutJDialog(this, true).setVisible(true);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -102,6 +144,11 @@ public class MainJFrame extends javax.swing.JFrame {
         btnSanPham.setFocusable(false);
         btnSanPham.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnSanPham.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnSanPham.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSanPhamActionPerformed(evt);
+            }
+        });
         toolBar.add(btnSanPham);
 
         btnKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/khachhang.png"))); // NOI18N
@@ -116,6 +163,11 @@ public class MainJFrame extends javax.swing.JFrame {
         btnNhanVien.setFocusable(false);
         btnNhanVien.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnNhanVien.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnNhanVien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNhanVienActionPerformed(evt);
+            }
+        });
         toolBar.add(btnNhanVien);
 
         btnDoanhThu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/doanhthu.png"))); // NOI18N
@@ -138,6 +190,11 @@ public class MainJFrame extends javax.swing.JFrame {
         btnDangXuat.setFocusable(false);
         btnDangXuat.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDangXuat.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnDangXuat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDangXuatActionPerformed(evt);
+            }
+        });
         toolBar.add(btnDangXuat);
 
         getContentPane().add(toolBar, java.awt.BorderLayout.PAGE_START);
@@ -154,13 +211,16 @@ public class MainJFrame extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new java.awt.BorderLayout());
 
+        lblDongHo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblDongHo.setForeground(new java.awt.Color(255, 51, 51));
         lblDongHo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/Alarm.png"))); // NOI18N
         lblDongHo.setText("10:55 PM");
         jPanel2.add(lblDongHo, java.awt.BorderLayout.EAST);
 
         lblText.setBackground(new java.awt.Color(255, 255, 255));
-        lblText.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
-        lblText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/Info.png"))); // NOI18N
+        lblText.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        lblText.setForeground(new java.awt.Color(255, 51, 51));
+        lblText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/javared.png"))); // NOI18N
         lblText.setText("CTY TNHH TIENLONG Nocopyright");
         jPanel2.add(lblText, java.awt.BorderLayout.CENTER);
         jPanel2.add(jSeparator1, java.awt.BorderLayout.PAGE_START);
@@ -171,12 +231,22 @@ public class MainJFrame extends javax.swing.JFrame {
 
         mnuHeThong.setText("Hệ Thống");
 
-        mniDangNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/login.png"))); // NOI18N
+        mniDangNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/login1.png"))); // NOI18N
         mniDangNhap.setText("Đăng nhập");
+        mniDangNhap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniDangNhapActionPerformed(evt);
+            }
+        });
         mnuHeThong.add(mniDangNhap);
 
         mniDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/logout.png"))); // NOI18N
         mniDangXuat.setText("Đăng xuất");
+        mniDangXuat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniDangXuatActionPerformed(evt);
+            }
+        });
         mnuHeThong.add(mniDangXuat);
         mnuHeThong.add(jSeparator4);
 
@@ -187,6 +257,11 @@ public class MainJFrame extends javax.swing.JFrame {
 
         mniThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/exit.png"))); // NOI18N
         mniThoat.setText("Thoát");
+        mniThoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniThoatActionPerformed(evt);
+            }
+        });
         mnuHeThong.add(mniThoat);
 
         jMenuBar1.add(mnuHeThong);
@@ -195,6 +270,11 @@ public class MainJFrame extends javax.swing.JFrame {
 
         mniSanPham.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/product.png"))); // NOI18N
         mniSanPham.setText("Sản phẩm");
+        mniSanPham.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniSanPhamActionPerformed(evt);
+            }
+        });
         mnuQuanLy.add(mniSanPham);
 
         mniKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/khachhang.png"))); // NOI18N
@@ -203,6 +283,11 @@ public class MainJFrame extends javax.swing.JFrame {
 
         mniNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/nhanvien.png"))); // NOI18N
         mniNhanVien.setText("Nhân viên");
+        mniNhanVien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniNhanVienActionPerformed(evt);
+            }
+        });
         mnuQuanLy.add(mniNhanVien);
 
         jMenuBar1.add(mnuQuanLy);
@@ -211,10 +296,20 @@ public class MainJFrame extends javax.swing.JFrame {
 
         mniDoanhThu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/doanhthu.png"))); // NOI18N
         mniDoanhThu.setText("Doanh thu");
+        mniDoanhThu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniDoanhThuActionPerformed(evt);
+            }
+        });
         mnuThongKe.add(mniDoanhThu);
 
         mniTongSP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/sumproject.png"))); // NOI18N
         mniTongSP.setText("Tổng sản phẩm");
+        mniTongSP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniTongSPActionPerformed(evt);
+            }
+        });
         mnuThongKe.add(mniTongSP);
 
         jMenuBar1.add(mnuThongKe);
@@ -223,10 +318,20 @@ public class MainJFrame extends javax.swing.JFrame {
 
         mniHuongDan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/guide.png"))); // NOI18N
         mniHuongDan.setText("Hướng dẫn");
+        mniHuongDan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniHuongDanActionPerformed(evt);
+            }
+        });
         mnuTroGiup.add(mniHuongDan);
 
         mniGioiThieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/intro.png"))); // NOI18N
         mniGioiThieu.setText("Giới thiệu");
+        mniGioiThieu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniGioiThieuActionPerformed(evt);
+            }
+        });
         mnuTroGiup.add(mniGioiThieu);
 
         jMenuBar1.add(mnuTroGiup);
@@ -235,6 +340,55 @@ public class MainJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void mniSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniSanPhamActionPerformed
+        openSanPham();        // TODO add your handling code here:
+    }//GEN-LAST:event_mniSanPhamActionPerformed
+
+    private void mniNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniNhanVienActionPerformed
+        openNhanVien();        // TODO add your handling code here:
+    }//GEN-LAST:event_mniNhanVienActionPerformed
+
+    private void mniDoanhThuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDoanhThuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mniDoanhThuActionPerformed
+
+    private void mniTongSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniTongSPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mniTongSPActionPerformed
+
+    private void mniGioiThieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniGioiThieuActionPerformed
+openAbout();            // TODO add your handling code here:
+    }//GEN-LAST:event_mniGioiThieuActionPerformed
+
+    private void mniHuongDanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniHuongDanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mniHuongDanActionPerformed
+
+    private void btnSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSanPhamActionPerformed
+        mniSanPhamActionPerformed(evt);        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSanPhamActionPerformed
+
+    private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
+        mniNhanVienActionPerformed(evt);// TODO add your handling code here:
+    }//GEN-LAST:event_btnNhanVienActionPerformed
+
+    private void mniDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDangNhapActionPerformed
+        this.openLogin();        // TODO add your handling code here:
+    }//GEN-LAST:event_mniDangNhapActionPerformed
+
+    private void mniDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDangXuatActionPerformed
+        this.logoff();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mniDangXuatActionPerformed
+
+    private void mniThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniThoatActionPerformed
+        this.exit();        // TODO add your handling code here:
+    }//GEN-LAST:event_mniThoatActionPerformed
+
+    private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
+        mniDangXuatActionPerformed(evt);        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDangXuatActionPerformed
 
     /**
      * @param args the command line arguments

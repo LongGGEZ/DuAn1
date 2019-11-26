@@ -63,7 +63,7 @@
           <Font name="Tahoma" size="14" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="33" green="cc" red="ff" type="rgb"/>
+          <Color blue="0" green="0" red="ff" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Th&#xea;m Lo&#x1ea1;i S&#x1ea3;n Ph&#x1ea9;m"/>
       </Properties>
@@ -141,11 +141,13 @@
                           <Component id="txtTenLoai" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnLast" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnNext" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnPrev" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btnFirst" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btnLast" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnNext" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnPrev" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -179,7 +181,7 @@
             <Component class="javax.swing.JButton" name="btnInsert">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/edu/poly/images/add.png"/>
+                  <Image iconType="3" name="/edu/poly/images/add1.png"/>
                 </Property>
               </Properties>
               <Events>
@@ -189,7 +191,7 @@
             <Component class="javax.swing.JButton" name="btnUpdate">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/edu/poly/images/edit.png"/>
+                  <Image iconType="3" name="/edu/poly/images/edit1.png"/>
                 </Property>
               </Properties>
               <Events>
@@ -199,7 +201,7 @@
             <Component class="javax.swing.JButton" name="btnDelete">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/edu/poly/images/delete.png"/>
+                  <Image iconType="3" name="/edu/poly/images/delete1.png"/>
                 </Property>
               </Properties>
               <Events>
@@ -209,7 +211,7 @@
             <Component class="javax.swing.JButton" name="btnClear">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/edu/poly/images/new.png"/>
+                  <Image iconType="3" name="/edu/poly/images/refresh.png"/>
                 </Property>
               </Properties>
               <Events>

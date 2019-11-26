@@ -34,9 +34,9 @@ public class SanPhamDAO {
         return select(sql);
     }
 
-    public SanPham findById(String macd) {
+    public SanPham findById(String masp) {
         String sql = "SELECT * FROM SanPham WHERE masp=?";
-        List<SanPham> list = select(sql, macd);
+        List<SanPham> list = select(sql, masp);
         return list.size() > 0 ? list.get(0) : null;
     }
 
@@ -62,10 +62,10 @@ public class SanPhamDAO {
     private SanPham readFromResultSet(ResultSet rs) throws SQLException {
         SanPham model = new SanPham();
         model.setMasp(rs.getString("masp"));
-        model.setTensp(rs.getString("Hinh"));
-        model.setGiasp(rs.getFloat("giasp"));
+        model.setTensp(rs.getString("tensp"));
+        model.setGiasp(rs.getDouble("giasp"));
         model.setSoluongsp(rs.getInt("soluongsp"));
-        model.setHinhsp(rs.getString("hinhsp"));
+        model.setHinhsp(rs.getString("hinhanhsp"));
         model.setMaloai(rs.getString("maloai"));
         return model;
     }
