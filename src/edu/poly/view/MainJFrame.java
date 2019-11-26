@@ -81,7 +81,7 @@ public class MainJFrame extends javax.swing.JFrame {
     
     void openLoaiSP() {
         if (ShareHelper.authenticated()) {
-            new LoaiSP().setVisible(true);
+            new LoaiSPJFrame().setVisible(true);
         } else {
             DialogHelper.alert(this, "Vui lòng đăng nhập!");
         }

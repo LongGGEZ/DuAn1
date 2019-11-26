@@ -15,12 +15,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Admin
  */
-public class LoaiSP extends javax.swing.JFrame {
+public class LoaiSPJFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form LoaiSanPham
      */
-    public LoaiSP() {
+    public LoaiSPJFrame() {
         initComponents();
         setLocationRelativeTo(this);
     }
@@ -439,7 +439,7 @@ public class LoaiSP extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoaiSP().setVisible(true);
+                new LoaiSPJFrame().setVisible(true);
             }
         });
     }

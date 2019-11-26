@@ -128,8 +128,7 @@ public class SanPhamJFrame extends javax.swing.JFrame {
         txtSoLuongSP.setText(String.valueOf(model.getSoluongsp()));
         cboLoaiSP.setToolTipText(String.valueOf(model.getMasp()));
         cboLoaiSP.setSelectedItem(lspdao.findById(model.getMaloai()));
-        cboLoaiSP.setToolTipText(String.valueOf(model.getMaloai()));
-        cboLoaiSP.setSelectedItem(lspdao.findById(model.getMasp() ));
+        
         lblHinh.setToolTipText(model.getHinhsp());
         if (model.getHinhsp() != null) {
             lblHinh.setIcon(ShareHelper.readLogo(model.getHinhsp()));
@@ -139,9 +138,10 @@ public class SanPhamJFrame extends javax.swing.JFrame {
     SanPham getModel() {
         SanPham model = new SanPham();  
         LoaiSanPham loaiSP = (LoaiSanPham) cboLoaiSP.getSelectedItem();
+        model.setMaloai(loaiSP.getMaLoaiSP());
         model.setMasp(txtMaSP.getText());
         model.setTensp(txtTenSP.getText());
-        model.setGiasp(Float.valueOf(txtGiaSP.getText()));
+        model.setGiasp(Double.valueOf(txtGiaSP.getText()));
         model.setSoluongsp(Integer.valueOf(txtSoLuongSP.getText()));
         model.setMaloai(cboLoaiSP.getToolTipText());
         model.setHinhsp(lblHinh.getToolTipText());
@@ -536,7 +536,7 @@ public class SanPhamJFrame extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         this.fillComboBox();
-        this.clear();
+//        this.clear();
         this.load();
         this.setStatus(true);
     }//GEN-LAST:event_formWindowOpened
