@@ -13,10 +13,8 @@ import edu.poly.helper.ShareHelper;
 import edu.poly.model.HoaDon;
 import edu.poly.model.HoaDonChiTiet;
 import edu.poly.model.SanPham;
-import static java.nio.file.Files.list;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -24,6 +22,8 @@ import javax.swing.table.DefaultTableModel;
  * @author hoang
  */
 public class BanHangJFrame extends javax.swing.JFrame {
+
+    int ok = 0;
 
     /**
      * Creates new form BanHangJFrame
@@ -37,7 +37,6 @@ public class BanHangJFrame extends javax.swing.JFrame {
     HoaDonDAO hdDAO = new HoaDonDAO();
     ArrayList<HoaDonChiTiet> list = new ArrayList<>();
     DefaultTableModel model;
-    
 
     void load() {
         DefaultTableModel model = (DefaultTableModel) tblSanPham.getModel();
@@ -88,27 +87,15 @@ public class BanHangJFrame extends javax.swing.JFrame {
         Tien = (Integer) Gia * SoLuong;
         txtThanhTien.setText(String.valueOf(Tien));
     }
-void insertDH(){
-    HoaDonChiTiet hdct=new HoaDonChiTiet();
-    try {
-        hdct.setTensp(txtTenSP.getText());
-        hdct.setGiasp(txtGiaSP.getText());
-//        hdct.setSoluong(spnSoLuong.getValue());
-//        hdct.setThanhtien(txtThanhTien.getText());
-//        hdct.setNgaytao(DateHelper.toString(txtNgayTao.getText()));
-        hdct.setTensp(txtManv.getText());
-    } catch (Exception e) {
-    }
-}
-    public void fillToTable() {
-        model = (DefaultTableModel) tblDonHang.getModel();
-        model.setRowCount(0);
-        for (HoaDonChiTiet e : list) {
-            Object[] row = new Object[]{
-                e.getTensp(), e.getGiasp(), e.getSoluong(), e.getThanhtien(), e.getNgaytao(), e.getManv()
-            };
-            model.addRow(row);
-        }
+
+    void insertDH() {
+        DefaultTableModel model = (DefaultTableModel) tblDonHang.getModel();
+        model.setRowCount(ok);
+        model.addRow(new Object[]{
+            txtTenSP.getText(), txtGiaSP.getText(), txtSoLuong.getText(), txtThanhTien.getText(), txtNgayTao.getText(), txtManv.getText()
+        });
+        ok++;
+
     }
 
     /**
@@ -177,15 +164,30 @@ void insertDH(){
 
         tblDonHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Tên sản phẩm", "Giá sản phẩm", "Số lượng", "Thành tiền", "Ngày tạo", "Mã NV"
+                "Tên sản phẩm", "Giá sản phẩm", "Số lượng", "Thành tiền", "Ngày tạo", "Mã NV", "Xóa"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(tblDonHang);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -201,9 +203,12 @@ void insertDH(){
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 718, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 718, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnThanhtoan, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
                     .addComponent(btnThoat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -464,7 +469,7 @@ void insertDH(){
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
         insertDH();
-        fillToTable();
+
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void txtSoLuongKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSoLuongKeyReleased

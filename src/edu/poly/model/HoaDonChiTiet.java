@@ -5,46 +5,51 @@
  */
 package edu.poly.model;
 
-import java.util.Date;
 
 /**
  *
  * @author hoang
  */
 public class HoaDonChiTiet {
-    private String tensp;
-    private String giasp;
+    private String mahoadonchitiet;
+    private String mahoadon;
+    private String masp;
      private int soluong;
      private int thanhtien;
-    private Date ngaytao;
-    private String manv;
 
     public HoaDonChiTiet() {
     }
 
-    public HoaDonChiTiet(String tensp, String giasp, int soluong, int thanhtien, Date ngaytao, String manv) {
-        this.tensp = tensp;
-        this.giasp = giasp;
+    public HoaDonChiTiet(String mahoadonchitiet, String mahoadon, String masp, int soluong, int thanhtien) {
+        this.mahoadonchitiet = mahoadonchitiet;
+        this.mahoadon = mahoadon;
+        this.masp = masp;
         this.soluong = soluong;
         this.thanhtien = thanhtien;
-        this.ngaytao = ngaytao;
-        this.manv = manv;
     }
 
-    public String getTensp() {
-        return tensp;
+    public String getMahoadonchitiet() {
+        return mahoadonchitiet;
     }
 
-    public void setTensp(String tensp) {
-        this.tensp = tensp;
+    public void setMahoadonchitiet(String mahoadonchitiet) {
+        this.mahoadonchitiet = mahoadonchitiet;
     }
 
-    public String getGiasp() {
-        return giasp;
+    public String getMahoadon() {
+        return mahoadon;
     }
 
-    public void setGiasp(String giasp) {
-        this.giasp = giasp;
+    public void setMahoadon(String mahoadon) {
+        this.mahoadon = mahoadon;
+    }
+
+    public String getMasp() {
+        return masp;
+    }
+
+    public void setMasp(String masp) {
+        this.masp = masp;
     }
 
     public int getSoluong() {
@@ -63,21 +68,5 @@ public class HoaDonChiTiet {
         this.thanhtien = thanhtien;
     }
 
-    public Date getNgaytao() {
-        return ngaytao;
-    }
-
-    public void setNgaytao(Date ngaytao) {
-        this.ngaytao = ngaytao;
-    }
-
-    public String getManv() {
-        return manv;
-    }
-
-    public void setManv(String manv) {
-        this.manv = manv;
-    }
-    
-    
+   
 }
