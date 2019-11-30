@@ -11,10 +11,10 @@ import edu.poly.helper.DateHelper;
 import edu.poly.helper.DialogHelper;
 import edu.poly.helper.ShareHelper;
 import edu.poly.model.HoaDon;
-import edu.poly.model.HoaDonChiTiet;
 import edu.poly.model.SanPham;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class BanHangJFrame extends javax.swing.JFrame {
 
-    int ok = 0;
+    int index = 0;
 
     /**
      * Creates new form BanHangJFrame
@@ -32,11 +32,8 @@ public class BanHangJFrame extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
     }
-    int index = 0;
     SanPhamDAO spDAO = new SanPhamDAO();
     HoaDonDAO hdDAO = new HoaDonDAO();
-    ArrayList<HoaDonChiTiet> list = new ArrayList<>();
-    DefaultTableModel model;
 
     void load() {
         DefaultTableModel model = (DefaultTableModel) tblSanPham.getModel();
@@ -56,7 +53,7 @@ public class BanHangJFrame extends javax.swing.JFrame {
                 model.addRow(row);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+
             DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!");
         }
     }
@@ -76,9 +73,8 @@ public class BanHangJFrame extends javax.swing.JFrame {
     }
 
     void thanhtien() {
-
         int SoLuong = 0;
-        Integer Tien = 0;
+        int Tien = 0;
         try {
             SoLuong = Integer.valueOf(txtSoLuong.getText());
         } catch (Exception e) {
@@ -90,13 +86,33 @@ public class BanHangJFrame extends javax.swing.JFrame {
 
     void insertDH() {
         DefaultTableModel model = (DefaultTableModel) tblDonHang.getModel();
-        model.setRowCount(ok);
+        model.setRowCount(index);
         model.addRow(new Object[]{
             txtTenSP.getText(), txtGiaSP.getText(), txtSoLuong.getText(), txtThanhTien.getText(), txtNgayTao.getText(), txtManv.getText()
         });
-        ok++;
+        index++;
 
     }
+private boolean check(){
+    StringBuilder sb = new StringBuilder();
+        if (txtTenSP.getText().equals("")|txtGiaSP.getText().equals("")) {
+            sb.append("Sản phẩm chưa được thêm vào!\n");
+        }
+
+        if (txtSoLuong.getText().equals("")) {
+            sb.append("Số lượng sản phẩm không được để trống!\n");
+        } else if (!(Pattern.matches("[0-9]{1,1000}", txtSoLuong.getText()))) {
+            JOptionPane.showMessageDialog(this, "Số lượng phải là số");
+            return false;
+        }
+
+        if (sb.length() > 0) {
+            JOptionPane.showMessageDialog(this, sb.toString());
+            return false;
+        }
+
+        return true;
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -117,7 +133,7 @@ public class BanHangJFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         btnThoat = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnXoa = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         txtTimkiem = new javax.swing.JTextField();
@@ -192,7 +208,12 @@ public class BanHangJFrame extends javax.swing.JFrame {
 
         jButton1.setText("Mới");
 
-        jButton2.setText("Xóa");
+        btnXoa.setText("Xóa");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -207,7 +228,7 @@ public class BanHangJFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE))
+                    .addComponent(btnXoa, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnThoat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -235,10 +256,9 @@ public class BanHangJFrame extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnThoat, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(btnXoa, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                    .addComponent(btnThoat, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(14, 14, 14))
         );
 
@@ -328,8 +348,10 @@ public class BanHangJFrame extends javax.swing.JFrame {
         jLabel8.setText("Số lượng:");
 
         txtTenSP.setEditable(false);
+        txtTenSP.setEnabled(false);
 
         txtGiaSP.setEditable(false);
+        txtGiaSP.setEnabled(false);
 
         btnThem.setText("Thêm");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
@@ -339,16 +361,23 @@ public class BanHangJFrame extends javax.swing.JFrame {
         });
 
         btnMoi.setText("Mới");
+        btnMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoiActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("Thành tiền:");
 
         jLabel10.setText("Ngày tạo:");
 
         txtNgayTao.setEditable(false);
+        txtNgayTao.setEnabled(false);
 
         jLabel11.setText("Mã nhân viên:");
 
         txtManv.setEditable(false);
+        txtManv.setEnabled(false);
 
         txtSoLuong.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -471,7 +500,9 @@ public class BanHangJFrame extends javax.swing.JFrame {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        insertDH();
+        if (check()) {
+            insertDH();
+        }
 
     }//GEN-LAST:event_btnThemActionPerformed
 
@@ -479,6 +510,19 @@ public class BanHangJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         thanhtien();
     }//GEN-LAST:event_txtSoLuongKeyReleased
+
+    private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
+        // TODO add your handling code here:
+        txtTenSP.setText("");
+        txtGiaSP.setText("");
+        txtSoLuong.setText("");
+        txtThanhTien.setText("");
+    }//GEN-LAST:event_btnMoiActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        // TODO add your handling code here:   
+        JOptionPane.showMessageDialog(this, "Xóa thành công");
+    }//GEN-LAST:event_btnXoaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -521,8 +565,8 @@ public class BanHangJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnThoat;
     private javax.swing.JButton btnTimkiem;
+    private javax.swing.JButton btnXoa;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

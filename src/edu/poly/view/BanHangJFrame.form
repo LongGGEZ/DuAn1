@@ -75,7 +75,7 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jButton1" max="32767" attributes="0"/>
-                      <Component id="jButton2" pref="113" max="32767" attributes="0"/>
+                      <Component id="btnXoa" pref="113" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -110,11 +110,9 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jButton2" pref="45" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btnThoat" pref="45" max="32767" attributes="0"/>
-                          <Component id="jLabel1" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="btnXoa" pref="45" max="32767" attributes="0"/>
+                      <Component id="btnThoat" pref="45" max="32767" attributes="0"/>
+                      <Component id="jLabel1" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
               </Group>
@@ -189,10 +187,13 @@
             <Property name="text" type="java.lang.String" value="M&#x1edb;i"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="btnXoa">
           <Properties>
             <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoaActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -420,11 +421,13 @@
         <Component class="javax.swing.JTextField" name="txtTenSP">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtGiaSP">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnThem">
@@ -439,6 +442,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="M&#x1edb;i"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMoiActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
@@ -455,6 +461,7 @@
         <Component class="javax.swing.JTextField" name="txtNgayTao">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
@@ -465,6 +472,7 @@
         <Component class="javax.swing.JTextField" name="txtManv">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtSoLuong">
