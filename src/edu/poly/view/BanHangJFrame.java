@@ -334,12 +334,6 @@ void insertDH(){
 
         jLabel9.setText("Thành tiền:");
 
-        txtThanhTien.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtThanhTienKeyReleased(evt);
-            }
-        });
-
         jLabel10.setText("Ngày tạo:");
 
         txtNgayTao.setEditable(false);
@@ -347,6 +341,12 @@ void insertDH(){
         jLabel11.setText("Mã nhân viên:");
 
         txtManv.setEditable(false);
+
+        txtSoLuong.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSoLuongKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -467,10 +467,10 @@ void insertDH(){
         fillToTable();
     }//GEN-LAST:event_btnThemActionPerformed
 
-    private void txtThanhTienKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtThanhTienKeyReleased
+    private void txtSoLuongKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSoLuongKeyReleased
         // TODO add your handling code here:
         thanhtien();
-    }//GEN-LAST:event_txtThanhTienKeyReleased
+    }//GEN-LAST:event_txtSoLuongKeyReleased
 
     /**
      * @param args the command line arguments
