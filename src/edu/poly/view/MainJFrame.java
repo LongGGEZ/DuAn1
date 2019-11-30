@@ -86,7 +86,20 @@ public class MainJFrame extends javax.swing.JFrame {
             DialogHelper.alert(this, "Vui lòng đăng nhập!");
         }
     }
-    
+    void openBanHang() {
+        if (ShareHelper.authenticated()) {
+            new BanHangJFrame().setVisible(true);
+        } else {
+            DialogHelper.alert(this, "Vui lòng đăng nhập!");
+        }
+    }
+    void openDoanhThu() {
+        if (ShareHelper.authenticated()) {
+            new DoanhThuJFrame().setVisible(true);
+        } else {
+            DialogHelper.alert(this, "Vui lòng đăng nhập!");
+        }
+    }
     void openAbout() {
         new AboutJDialog(this, true).setVisible(true);
     }
@@ -102,7 +115,6 @@ public class MainJFrame extends javax.swing.JFrame {
 
         toolBar = new javax.swing.JToolBar();
         btnSanPham = new javax.swing.JButton();
-        btnKhachHang = new javax.swing.JButton();
         btnNhanVien = new javax.swing.JButton();
         btnDoanhThu = new javax.swing.JButton();
         btnTongSP = new javax.swing.JButton();
@@ -124,11 +136,11 @@ public class MainJFrame extends javax.swing.JFrame {
         mniThoat = new javax.swing.JMenuItem();
         mnuQuanLy = new javax.swing.JMenu();
         mniSanPham = new javax.swing.JMenuItem();
-        mniKhachHang = new javax.swing.JMenuItem();
         mniNhanVien = new javax.swing.JMenuItem();
+        mniBanHang = new javax.swing.JMenuItem();
+        mniLoaiSP = new javax.swing.JMenuItem();
         mnuThongKe = new javax.swing.JMenu();
         mniDoanhThu = new javax.swing.JMenuItem();
-        mniTongSP = new javax.swing.JMenuItem();
         mnuTroGiup = new javax.swing.JMenu();
         mniHuongDan = new javax.swing.JMenuItem();
         mniGioiThieu = new javax.swing.JMenuItem();
@@ -151,13 +163,6 @@ public class MainJFrame extends javax.swing.JFrame {
         });
         toolBar.add(btnSanPham);
 
-        btnKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/khachhang.png"))); // NOI18N
-        btnKhachHang.setText("Khách Hàng");
-        btnKhachHang.setFocusable(false);
-        btnKhachHang.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnKhachHang.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        toolBar.add(btnKhachHang);
-
         btnNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/nhanvien.png"))); // NOI18N
         btnNhanVien.setText("Nhân Viên");
         btnNhanVien.setFocusable(false);
@@ -175,13 +180,23 @@ public class MainJFrame extends javax.swing.JFrame {
         btnDoanhThu.setFocusable(false);
         btnDoanhThu.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDoanhThu.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnDoanhThu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDoanhThuActionPerformed(evt);
+            }
+        });
         toolBar.add(btnDoanhThu);
 
         btnTongSP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/sumproject.png"))); // NOI18N
-        btnTongSP.setText("Tổng SP");
+        btnTongSP.setText("Bán Hàng");
         btnTongSP.setFocusable(false);
         btnTongSP.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnTongSP.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnTongSP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTongSPActionPerformed(evt);
+            }
+        });
         toolBar.add(btnTongSP);
         toolBar.add(jSeparator2);
 
@@ -277,10 +292,6 @@ public class MainJFrame extends javax.swing.JFrame {
         });
         mnuQuanLy.add(mniSanPham);
 
-        mniKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/khachhang.png"))); // NOI18N
-        mniKhachHang.setText("Khách hàng");
-        mnuQuanLy.add(mniKhachHang);
-
         mniNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/nhanvien.png"))); // NOI18N
         mniNhanVien.setText("Nhân viên");
         mniNhanVien.addActionListener(new java.awt.event.ActionListener() {
@@ -289,6 +300,24 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
         mnuQuanLy.add(mniNhanVien);
+
+        mniBanHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/sumproject.png"))); // NOI18N
+        mniBanHang.setText("Bán hàng");
+        mniBanHang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniBanHangActionPerformed(evt);
+            }
+        });
+        mnuQuanLy.add(mniBanHang);
+
+        mniLoaiSP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/cat.png"))); // NOI18N
+        mniLoaiSP.setText("Loại sản phẩm");
+        mniLoaiSP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniLoaiSPActionPerformed(evt);
+            }
+        });
+        mnuQuanLy.add(mniLoaiSP);
 
         jMenuBar1.add(mnuQuanLy);
 
@@ -302,15 +331,6 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
         mnuThongKe.add(mniDoanhThu);
-
-        mniTongSP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/sumproject.png"))); // NOI18N
-        mniTongSP.setText("Tổng sản phẩm");
-        mniTongSP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniTongSPActionPerformed(evt);
-            }
-        });
-        mnuThongKe.add(mniTongSP);
 
         jMenuBar1.add(mnuThongKe);
 
@@ -351,11 +371,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void mniDoanhThuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDoanhThuActionPerformed
         // TODO add your handling code here:
+        openDoanhThu();
     }//GEN-LAST:event_mniDoanhThuActionPerformed
-
-    private void mniTongSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniTongSPActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mniTongSPActionPerformed
 
     private void mniGioiThieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniGioiThieuActionPerformed
         openAbout();            // TODO add your handling code here:
@@ -389,6 +406,26 @@ public class MainJFrame extends javax.swing.JFrame {
     private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
         mniDangXuatActionPerformed(evt);        // TODO add your handling code here:
     }//GEN-LAST:event_btnDangXuatActionPerformed
+
+    private void btnTongSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTongSPActionPerformed
+        // TODO add your handling code here:
+        mniBanHangActionPerformed(evt);
+    }//GEN-LAST:event_btnTongSPActionPerformed
+
+    private void mniBanHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniBanHangActionPerformed
+        // TODO add your handling code here:
+        openBanHang();
+    }//GEN-LAST:event_mniBanHangActionPerformed
+
+    private void mniLoaiSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLoaiSPActionPerformed
+        // TODO add your handling code here:
+        openLoaiSP();
+    }//GEN-LAST:event_mniLoaiSPActionPerformed
+
+    private void btnDoanhThuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoanhThuActionPerformed
+        // TODO add your handling code here:
+        mniDoanhThuActionPerformed(evt);
+    }//GEN-LAST:event_btnDoanhThuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -431,7 +468,6 @@ public class MainJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDangXuat;
     private javax.swing.JButton btnDoanhThu;
-    private javax.swing.JButton btnKhachHang;
     private javax.swing.JButton btnNhanVien;
     private javax.swing.JButton btnSanPham;
     private javax.swing.JButton btnTongSP;
@@ -445,17 +481,17 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblDongHo;
     private javax.swing.JLabel lblImage;
     private javax.swing.JLabel lblText;
+    private javax.swing.JMenuItem mniBanHang;
     private javax.swing.JMenuItem mniDangNhap;
     private javax.swing.JMenuItem mniDangXuat;
     private javax.swing.JMenuItem mniDoanhThu;
     private javax.swing.JMenuItem mniDoiMatKhau;
     private javax.swing.JMenuItem mniGioiThieu;
     private javax.swing.JMenuItem mniHuongDan;
-    private javax.swing.JMenuItem mniKhachHang;
+    private javax.swing.JMenuItem mniLoaiSP;
     private javax.swing.JMenuItem mniNhanVien;
     private javax.swing.JMenuItem mniSanPham;
     private javax.swing.JMenuItem mniThoat;
-    private javax.swing.JMenuItem mniTongSP;
     private javax.swing.JMenu mnuHeThong;
     private javax.swing.JMenu mnuQuanLy;
     private javax.swing.JMenu mnuThongKe;

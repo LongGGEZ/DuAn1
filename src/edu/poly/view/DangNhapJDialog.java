@@ -114,8 +114,12 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         lblDangNhap.setForeground(new java.awt.Color(51, 102, 255));
         lblDangNhap.setText("Đăng Nhập");
 
+        txtTaiKhoan.setText("Long");
+
         lblTaiKhoan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblTaiKhoan.setText("Tài khoản:");
+
+        txtMatkhau.setText("1234");
 
         lblMatKhau.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblMatKhau.setText("Mật khẩu:");

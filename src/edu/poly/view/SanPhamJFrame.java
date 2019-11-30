@@ -13,8 +13,10 @@ import edu.poly.model.LoaiSanPham;
 import edu.poly.model.SanPham;
 import java.io.File;
 import java.util.List;
+import java.util.regex.Pattern;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -30,7 +32,7 @@ public class SanPhamJFrame extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         fileChooser = new JFileChooser();
-        
+
     }
     int index = 0;
     SanPhamDAO dao = new SanPhamDAO();
@@ -40,18 +42,18 @@ public class SanPhamJFrame extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tblSanPham.getModel();
         model.setRowCount(0);
         try {
-            
+
             List<SanPham> list = dao.select();
             for (SanPham sp : list) {
-                
+
                 Object[] row = {
                     sp.getMasp(),
                     sp.getTensp(),
                     sp.getGiasp(),
                     sp.getSoluongsp(),
-                     sp.getMaloai(),
+                    sp.getMaloai(),
                     sp.getHinhsp()
-                    
+
                 };
                 model.addRow(row);
             }
@@ -64,10 +66,10 @@ public class SanPhamJFrame extends javax.swing.JFrame {
     void insert() {
         SanPham model = getModel();
         setModel(model);
-//        if (model.getHinhsp() == null) {
-//            DialogHelper.alert(this, "Hình Không Được Để Trống");
-//            return;
-//        }
+        if (model.getHinhsp() == null) {
+            DialogHelper.alert(this, "Hình Không Được Để Trống");
+            return;
+        }
         try {
             dao.insert(model);
             this.load();
@@ -108,6 +110,8 @@ public class SanPhamJFrame extends javax.swing.JFrame {
     void clear() {
         this.setModel(new SanPham());
         this.setStatus(true);
+        txtGiaSP.setText("");
+        txtSoLuongSP.setText("");
     }
 
     void edit() {
@@ -129,9 +133,6 @@ public class SanPhamJFrame extends javax.swing.JFrame {
         txtTenSP.setText(model.getTensp());
         txtGiaSP.setText(String.valueOf(model.getGiasp()));
         txtSoLuongSP.setText(String.valueOf(model.getSoluongsp()));
-        cboLoaiSP.setToolTipText(String.valueOf(model.getMasp()));
-        cboLoaiSP.setSelectedItem(lspdao.findById(model.getMaloai()));
-        
         lblHinh.setToolTipText(model.getHinhsp());
         if (model.getHinhsp() != null) {
             lblHinh.setIcon(ShareHelper.readLogo(model.getHinhsp()));
@@ -139,15 +140,14 @@ public class SanPhamJFrame extends javax.swing.JFrame {
     }
 
     SanPham getModel() {
-        SanPham model = new SanPham();  
+        SanPham model = new SanPham();
         LoaiSanPham loaiSP = (LoaiSanPham) cboLoaiSP.getSelectedItem();
         model.setMaloai(loaiSP.getMaLoaiSP());
         model.setMasp(txtMaSP.getText());
         model.setTensp(txtTenSP.getText());
-        model.setGiasp(Double.valueOf(txtGiaSP.getText()));
+        model.setGiasp(Integer.valueOf(txtGiaSP.getText()));
         model.setSoluongsp(Integer.valueOf(txtSoLuongSP.getText()));
         model.setMaloai(model.getMaloai());
-       
         model.setHinhsp(lblHinh.getToolTipText());
         return model;
     }
@@ -177,12 +177,11 @@ public class SanPhamJFrame extends javax.swing.JFrame {
             DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!");
         }
     }
-    
+
 //    void selectComboBox() {
 //        LoaiSanPham loaiSP = (LoaiSanPham) cboLoaiSP.getSelectedItem();
 //        
 //    }
-
     void selectImage() {
         if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
@@ -193,6 +192,40 @@ public class SanPhamJFrame extends javax.swing.JFrame {
 
             }
         }
+    }
+
+    private boolean check() {
+        StringBuilder sb = new StringBuilder();
+
+        if (txtMaSP.getText().equals("")) {
+
+            sb.append("Mã sản phẩm không được để trống!\n");
+        } else if (!(txtMaSP.getText().length() >= 3)) {
+            DialogHelper.alert(this, "Mã sản phẩm phải trên 3 kí tự.");
+            return false;
+        }
+        if (txtTenSP.getText().equals("")) {
+            sb.append("Tên sản phẩm không được để trống!\n");
+        }
+        if (txtGiaSP.getText().equals("")) {
+            sb.append("Giá sản phẩm không được để trống!\n");
+        } else if (!(Pattern.matches("[0-9]{1,1000}", txtGiaSP.getText()))) {
+            JOptionPane.showMessageDialog(this, "Giá phải là số");
+            return false;
+        }
+        if (txtSoLuongSP.getText().equals("")) {
+            sb.append("Số lượng sản phẩm không được để trống!\n");
+        } else if (!(Pattern.matches("[0-9]{1,1000}", txtSoLuongSP.getText()))) {
+            JOptionPane.showMessageDialog(this, "Số lượng phải là số");
+            return false;
+        }
+
+        if (sb.length() > 0) {
+            JOptionPane.showMessageDialog(this, sb.toString());
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -499,7 +532,10 @@ public class SanPhamJFrame extends javax.swing.JFrame {
 
     private void btnInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertActionPerformed
         // TODO add your handling code here:
-        insert();
+        if (check()) {
+            insert();
+        }
+
     }//GEN-LAST:event_btnInsertActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed

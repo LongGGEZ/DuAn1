@@ -13,7 +13,7 @@ public class SanPham {
 
     private String masp;
     private String tensp;
-    private double giasp;
+    private int giasp;
     private int soluongsp;
     private String hinhsp;
     private String maloai;
@@ -21,7 +21,7 @@ public class SanPham {
     public SanPham() {
     }
 
-    public SanPham(String masp, String tensp, double giasp, int soluongsp, String hinhsp, String maloai) {
+    public SanPham(String masp, String tensp, int giasp, int soluongsp, String hinhsp, String maloai) {
         this.masp = masp;
         this.tensp = tensp;
         this.giasp = giasp;
@@ -46,11 +46,11 @@ public class SanPham {
         this.tensp = tensp;
     }
 
-    public double getGiasp() {
+    public int getGiasp() {
         return giasp;
     }
 
-    public void setGiasp(double giasp) {
+    public void setGiasp(int giasp) {
         this.giasp = giasp;
     }
 
@@ -78,6 +78,5 @@ public class SanPham {
         this.maloai = maloai;
     }
 
-   
     
 }

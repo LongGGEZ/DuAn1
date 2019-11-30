@@ -63,7 +63,7 @@ public class SanPhamDAO {
         SanPham model = new SanPham();
         model.setMasp(rs.getString("masp"));
         model.setTensp(rs.getString("tensp"));
-        model.setGiasp(rs.getDouble("giasp"));
+        model.setGiasp(rs.getInt("giasp"));
         model.setSoluongsp(rs.getInt("soluongsp"));
         model.setHinhsp(rs.getString("hinhanhsp"));
         model.setMaloai(rs.getString("maloai"));

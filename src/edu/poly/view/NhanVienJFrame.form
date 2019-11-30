@@ -178,7 +178,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="lblHoTen">
               <Properties>
-                <Property name="text" type="java.lang.String" value="H&#x1ecd; v&#xe0; t&#xea;n"/>
+                <Property name="text" type="java.lang.String" value="H&#x1ecd; v&#xe0; t&#xea;n:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtHoTen">
@@ -284,7 +284,8 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroup1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Ph&#x1ee5;c v&#x1ee5;"/>
+                <Property name="selected" type="boolean" value="true"/>
+                <Property name="text" type="java.lang.String" value="Nh&#xe2;n vi&#xea;n"/>
               </Properties>
             </Component>
           </SubComponents>

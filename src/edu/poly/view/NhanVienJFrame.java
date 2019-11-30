@@ -39,7 +39,7 @@ public class NhanVienJFrame extends javax.swing.JFrame {
                     nv.getManv(),
                     nv.getTennv(),
                     nv.getMatkhau(),
-                    nv.isVaitro() ? "Quản lý" : "Phục vụ"
+                    nv.isVaitro() ? "Quản lý" : "Nhân viên"
                 };
                 model.addRow(row);
             }
@@ -237,7 +237,7 @@ public class NhanVienJFrame extends javax.swing.JFrame {
 
         lblXacNhanMK.setText(" Xác nhận mật khẩu: ");
 
-        lblHoTen.setText("Họ và tên");
+        lblHoTen.setText("Họ và tên:");
 
         btnInsert.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/add1.png"))); // NOI18N
         btnInsert.addActionListener(new java.awt.event.ActionListener() {
@@ -306,7 +306,8 @@ public class NhanVienJFrame extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(rdoPhucvu);
-        rdoPhucvu.setText("Phục vụ");
+        rdoPhucvu.setSelected(true);
+        rdoPhucvu.setText("Nhân viên");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
