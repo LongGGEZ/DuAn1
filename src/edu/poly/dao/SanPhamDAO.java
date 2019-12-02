@@ -58,7 +58,12 @@ public class SanPhamDAO {
         }
         return list;
     }
-
+    
+    public List<SanPham> selectByKeyword(String keyword) {
+        String sql = "SELECT * FROM SanPham WHERE tensp LIKE ?";
+        return select(sql, "%" + keyword + "%");
+    }
+    
     private SanPham readFromResultSet(ResultSet rs) throws SQLException {
         SanPham model = new SanPham();
         model.setMasp(rs.getString("masp"));
