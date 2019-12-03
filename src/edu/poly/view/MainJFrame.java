@@ -310,7 +310,7 @@ public class MainJFrame extends javax.swing.JFrame {
         });
         mnuQuanLy.add(mniBanHang);
 
-        mniLoaiSP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/cat.png"))); // NOI18N
+        mniLoaiSP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/product.png"))); // NOI18N
         mniLoaiSP.setText("Loại sản phẩm");
         mniLoaiSP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
