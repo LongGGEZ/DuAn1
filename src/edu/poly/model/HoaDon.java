@@ -14,18 +14,16 @@ import java.util.Date;
 public class HoaDon {
     private String mahoadon;
     private int tongtien;
-    private Date ngaytao;
-    private String ghichu;
+    private Date ngaytao;  
     private String manv;
 
     public HoaDon() {
     }
 
-    public HoaDon(String mahoadon, int tongtien, Date ngaytao, String ghichu, String manv) {
+    public HoaDon(String mahoadon, int tongtien, Date ngaytao, String manv) {
         this.mahoadon = mahoadon;
         this.tongtien = tongtien;
         this.ngaytao = ngaytao;
-        this.ghichu = ghichu;
         this.manv = manv;
     }
 
@@ -51,14 +49,6 @@ public class HoaDon {
 
     public void setNgaytao(Date ngaytao) {
         this.ngaytao = ngaytao;
-    }
-
-    public String getGhichu() {
-        return ghichu;
-    }
-
-    public void setGhichu(String ghichu) {
-        this.ghichu = ghichu;
     }
 
     public String getManv() {

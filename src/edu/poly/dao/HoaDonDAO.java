@@ -19,8 +19,8 @@ import java.util.List;
 public class HoaDonDAO {
 
     public void insert(HoaDon model) {
-        String sql = "INSERT INTO HoaDon (mahoadon, tongtien, ngaytao, ghichu,manv) VALUES ( ?, ?, ?, ?,?)";
-        JdbcHelper.executeUpdate(sql, model.getMahoadon(), model.getTongtien(), model.getNgaytao(), model.getGhichu(), model.getManv());
+        String sql = "INSERT INTO HoaDon ( tongtien, ngaytao,manv) VALUES (?, ?,?)";
+        JdbcHelper.executeUpdate(sql, model.getTongtien(), model.getNgaytao(), model.getManv());
     }
      public List<HoaDon> select() {
         String sql = "SELECT * FROM HoaDon";

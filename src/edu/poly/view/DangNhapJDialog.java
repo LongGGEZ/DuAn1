@@ -115,10 +115,12 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         lblMatKhau.setForeground(new java.awt.Color(204, 204, 204));
         lblMatKhau.setText("Mật Khẩu:");
 
+        txtTaiKhoan.setText("Long");
         txtTaiKhoan.setCaretColor(new java.awt.Color(255, 51, 51));
         txtTaiKhoan.setSelectedTextColor(new java.awt.Color(255, 0, 0));
         txtTaiKhoan.setSelectionColor(new java.awt.Color(0, 0, 0));
 
+        txtMatKhau.setText("1234");
         txtMatKhau.setCaretColor(new java.awt.Color(255, 51, 51));
         txtMatKhau.setSelectedTextColor(new java.awt.Color(255, 0, 0));
         txtMatKhau.setSelectionColor(new java.awt.Color(0, 0, 0));
