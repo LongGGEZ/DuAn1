@@ -13,6 +13,7 @@ import java.util.Date;
  */
 public class HoaDon {
     private String mahoadon;
+    private int tongsp;
     private int tongtien;
     private Date ngaytao;  
     private String manv;
@@ -20,8 +21,9 @@ public class HoaDon {
     public HoaDon() {
     }
 
-    public HoaDon(String mahoadon, int tongtien, Date ngaytao, String manv) {
+    public HoaDon(String mahoadon, int tongsp, int tongtien, Date ngaytao, String manv) {
         this.mahoadon = mahoadon;
+        this.tongsp = tongsp;
         this.tongtien = tongtien;
         this.ngaytao = ngaytao;
         this.manv = manv;
@@ -33,6 +35,14 @@ public class HoaDon {
 
     public void setMahoadon(String mahoadon) {
         this.mahoadon = mahoadon;
+    }
+
+    public int getTongsp() {
+        return tongsp;
+    }
+
+    public void setTongsp(int tongsp) {
+        this.tongsp = tongsp;
     }
 
     public int getTongtien() {
@@ -58,5 +68,7 @@ public class HoaDon {
     public void setManv(String manv) {
         this.manv = manv;
     }
+
+   
     
 }

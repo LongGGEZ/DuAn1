@@ -11,29 +11,21 @@ package edu.poly.model;
  * @author hoang
  */
 public class HoaDonChiTiet {
-    private String mahoadonchitiet;
     private String mahoadon;
     private String masp;
+    private int giasp;
      private int soluong;
      private int thanhtien;
 
     public HoaDonChiTiet() {
     }
 
-    public HoaDonChiTiet(String mahoadonchitiet, String mahoadon, String masp, int soluong, int thanhtien) {
-        this.mahoadonchitiet = mahoadonchitiet;
+    public HoaDonChiTiet(String mahoadon, String masp, int giasp, int soluong, int thanhtien) {
         this.mahoadon = mahoadon;
         this.masp = masp;
+        this.giasp = giasp;
         this.soluong = soluong;
         this.thanhtien = thanhtien;
-    }
-
-    public String getMahoadonchitiet() {
-        return mahoadonchitiet;
-    }
-
-    public void setMahoadonchitiet(String mahoadonchitiet) {
-        this.mahoadonchitiet = mahoadonchitiet;
     }
 
     public String getMahoadon() {
@@ -50,6 +42,14 @@ public class HoaDonChiTiet {
 
     public void setMasp(String masp) {
         this.masp = masp;
+    }
+
+    public int getGiasp() {
+        return giasp;
+    }
+
+    public void setGiasp(int giasp) {
+        this.giasp = giasp;
     }
 
     public int getSoluong() {

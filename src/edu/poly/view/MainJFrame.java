@@ -100,6 +100,13 @@ public class MainJFrame extends javax.swing.JFrame {
             DialogHelper.alert(this, "Vui lòng đăng nhập!");
         }
     }
+     void openHoaDon() {
+        if (ShareHelper.authenticated()) {
+            new HoaDonJFrame().setVisible(true);
+        } else {
+            DialogHelper.alert(this, "Vui lòng đăng nhập!");
+        }
+    }
     void openAbout() {
         new AboutJDialog(this, true).setVisible(true);
     }
@@ -116,8 +123,9 @@ public class MainJFrame extends javax.swing.JFrame {
         toolBar = new javax.swing.JToolBar();
         btnSanPham = new javax.swing.JButton();
         btnNhanVien = new javax.swing.JButton();
-        btnDoanhThu = new javax.swing.JButton();
         btnTongSP = new javax.swing.JButton();
+        btnHoadon = new javax.swing.JButton();
+        btnDoanhThu = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JToolBar.Separator();
         btnDangXuat = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -141,6 +149,7 @@ public class MainJFrame extends javax.swing.JFrame {
         mniLoaiSP = new javax.swing.JMenuItem();
         mnuThongKe = new javax.swing.JMenu();
         mniDoanhThu = new javax.swing.JMenuItem();
+        mniHoadon = new javax.swing.JMenuItem();
         mnuTroGiup = new javax.swing.JMenu();
         mniHuongDan = new javax.swing.JMenuItem();
         mniGioiThieu = new javax.swing.JMenuItem();
@@ -175,18 +184,6 @@ public class MainJFrame extends javax.swing.JFrame {
         });
         toolBar.add(btnNhanVien);
 
-        btnDoanhThu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/doanhthu.png"))); // NOI18N
-        btnDoanhThu.setText("Doanh Thu");
-        btnDoanhThu.setFocusable(false);
-        btnDoanhThu.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnDoanhThu.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnDoanhThu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDoanhThuActionPerformed(evt);
-            }
-        });
-        toolBar.add(btnDoanhThu);
-
         btnTongSP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/sumproject.png"))); // NOI18N
         btnTongSP.setText("Bán Hàng");
         btnTongSP.setFocusable(false);
@@ -198,6 +195,30 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
         toolBar.add(btnTongSP);
+
+        btnHoadon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/guide.png"))); // NOI18N
+        btnHoadon.setText("Hóa Đơn");
+        btnHoadon.setFocusable(false);
+        btnHoadon.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnHoadon.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnHoadon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHoadonActionPerformed(evt);
+            }
+        });
+        toolBar.add(btnHoadon);
+
+        btnDoanhThu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/doanhthu.png"))); // NOI18N
+        btnDoanhThu.setText("Doanh Thu");
+        btnDoanhThu.setFocusable(false);
+        btnDoanhThu.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnDoanhThu.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnDoanhThu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDoanhThuActionPerformed(evt);
+            }
+        });
+        toolBar.add(btnDoanhThu);
         toolBar.add(jSeparator2);
 
         btnDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/logout.png"))); // NOI18N
@@ -332,6 +353,15 @@ public class MainJFrame extends javax.swing.JFrame {
         });
         mnuThongKe.add(mniDoanhThu);
 
+        mniHoadon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/guide.png"))); // NOI18N
+        mniHoadon.setText("Hóa đơn");
+        mniHoadon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniHoadonActionPerformed(evt);
+            }
+        });
+        mnuThongKe.add(mniHoadon);
+
         jMenuBar1.add(mnuThongKe);
 
         mnuTroGiup.setText("Trợ giúp");
@@ -427,6 +457,16 @@ public class MainJFrame extends javax.swing.JFrame {
         mniDoanhThuActionPerformed(evt);
     }//GEN-LAST:event_btnDoanhThuActionPerformed
 
+    private void mniHoadonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniHoadonActionPerformed
+        // TODO add your handling code here:
+        openHoaDon();
+    }//GEN-LAST:event_mniHoadonActionPerformed
+
+    private void btnHoadonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoadonActionPerformed
+        // TODO add your handling code here:
+        mniHoadonActionPerformed(evt);
+    }//GEN-LAST:event_btnHoadonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -468,6 +508,7 @@ public class MainJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDangXuat;
     private javax.swing.JButton btnDoanhThu;
+    private javax.swing.JButton btnHoadon;
     private javax.swing.JButton btnNhanVien;
     private javax.swing.JButton btnSanPham;
     private javax.swing.JButton btnTongSP;
@@ -487,6 +528,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniDoanhThu;
     private javax.swing.JMenuItem mniDoiMatKhau;
     private javax.swing.JMenuItem mniGioiThieu;
+    private javax.swing.JMenuItem mniHoadon;
     private javax.swing.JMenuItem mniHuongDan;
     private javax.swing.JMenuItem mniLoaiSP;
     private javax.swing.JMenuItem mniNhanVien;

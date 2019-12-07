@@ -12,6 +12,7 @@ import java.util.Date;
  * @author hoang
  */
 public class DonHang {
+    public String mahoadon;
     public String tensanpham;
     public int giasp;
     public int soluong;
@@ -22,13 +23,22 @@ public class DonHang {
     public DonHang() {
     }
 
-    public DonHang(String tensanpham, int giasp, int soluong, int thanhtien, Date ngaytao, String mnv) {
+    public DonHang(String mahoadon, String tensanpham, int giasp, int soluong, int thanhtien, Date ngaytao, String mnv) {
+        this.mahoadon = mahoadon;
         this.tensanpham = tensanpham;
         this.giasp = giasp;
         this.soluong = soluong;
         this.thanhtien = thanhtien;
         this.ngaytao = ngaytao;
         this.mnv = mnv;
+    }
+
+    public String getMahoadon() {
+        return mahoadon;
+    }
+
+    public void setMahoadon(String mahoadon) {
+        this.mahoadon = mahoadon;
     }
 
     public String getTensanpham() {
@@ -81,7 +91,7 @@ public class DonHang {
 
     @Override
     public String toString() {
-        return "DonHang{" + "tensanpham=" + tensanpham + ", giasp=" + giasp + ", soluong=" + soluong + ", thanhtien=" + thanhtien + ", ngaytao=" + ngaytao + ", mnv=" + mnv + '}';
+        return "DonHang{" + "mahoadon=" + mahoadon + ", tensanpham=" + tensanpham + ", giasp=" + giasp + ", soluong=" + soluong + ", thanhtien=" + thanhtien + ", ngaytao=" + ngaytao + ", mnv=" + mnv + '}';
     }
 
    

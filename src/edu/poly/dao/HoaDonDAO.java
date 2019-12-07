@@ -19,18 +19,21 @@ import java.util.List;
 public class HoaDonDAO {
 
     public void insert(HoaDon model) {
-        String sql = "INSERT INTO HoaDon ( tongtien, ngaytao,manv) VALUES (?, ?,?)";
-        JdbcHelper.executeUpdate(sql, model.getTongtien(), model.getNgaytao(), model.getManv());
+        String sql = "INSERT INTO HoaDon (mahoadon, tongsp,tongtien, ngaytao,manv) VALUES (?,?,?,?,?)";
+        JdbcHelper.executeUpdate(sql, model.getMahoadon(), model.getTongsp(), model.getTongtien(), model.getNgaytao(), model.getManv());
     }
-     public List<HoaDon> select() {
+
+    public List<HoaDon> select() {
         String sql = "SELECT * FROM HoaDon";
         return select(sql);
     }
-    public HoaDon findById(Integer mahd) {
+
+    public HoaDon findById(String mahd) {
         String sql = "SELECT * FROM HoaDon WHERE Mahoadon=?";
         List<HoaDon> list = select(sql, mahd);
         return list.size() > 0 ? list.get(0) : null;
     }
+
     private List<HoaDon> select(String sql, Object... args) {
         List<HoaDon> list = new ArrayList<>();
         try {
@@ -49,10 +52,15 @@ public class HoaDonDAO {
         }
         return list;
     }
+      public List<HoaDon> selectByKeyword(String keyword) {
+        String sql = "SELECT * FROM HoaDonChiTiet WHERE mahoadon LIKE ?";
+        return select(sql, "%" + keyword + "%");
+    }
+
     private HoaDon readFromResultSet(ResultSet rs) throws SQLException {
         HoaDon model = new HoaDon();
         model.setMahoadon(rs.getString("mahoadon"));
-        
+
         return model;
     }
 }
