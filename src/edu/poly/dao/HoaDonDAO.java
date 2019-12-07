@@ -29,7 +29,7 @@ public class HoaDonDAO {
     }
 
     public HoaDon findById(String mahd) {
-        String sql = "SELECT * FROM HoaDon WHERE Mahoadon=?";
+        String sql = "SELECT * FROM HoaDon WHERE mahoadon=?";
         List<HoaDon> list = select(sql, mahd);
         return list.size() > 0 ? list.get(0) : null;
     }
@@ -53,14 +53,16 @@ public class HoaDonDAO {
         return list;
     }
       public List<HoaDon> selectByKeyword(String keyword) {
-        String sql = "SELECT * FROM HoaDonChiTiet WHERE mahoadon LIKE ?";
-        return select(sql, "%" + keyword + "%");
+        String sql = "SELECT * FROM HoaDon WHERE mahoadon LIKE ?";
+        return select(sql, keyword );
     }
 
     private HoaDon readFromResultSet(ResultSet rs) throws SQLException {
         HoaDon model = new HoaDon();
         model.setMahoadon(rs.getString("mahoadon"));
-
+        model.setTongsp(rs.getInt("tongsp"));
+        model.setTongtien(rs.getInt("tongtien"));
+        model.setManv(rs.getString("manv"));
         return model;
     }
 }

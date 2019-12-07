@@ -5,12 +5,26 @@
  */
 package edu.poly.view;
 
+import edu.poly.dao.HoaDonDAO;
+import edu.poly.dao.LoaiSanPhamDAO;
+import edu.poly.helper.DateHelper;
+import edu.poly.helper.DialogHelper;
+import edu.poly.helper.ShareHelper;
+import edu.poly.model.HoaDon;
+import edu.poly.model.LoaiSanPham;
+import edu.poly.model.SanPham;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
  * @author hoang
  */
 public class HoaDonJFrame extends javax.swing.JFrame {
+    
+    
+    
     /**
      * Creates new form HoaDonJFrame
      */
@@ -20,7 +34,66 @@ public class HoaDonJFrame extends javax.swing.JFrame {
       
     }
     
+    int index = 0;
+    HoaDonDAO dao = new HoaDonDAO();
     
+    void load() {
+        DefaultTableModel model = (DefaultTableModel) tblHoaDon.getModel();
+        model.setRowCount(0);
+        try {
+            List<HoaDon> list = dao.select();
+            for (HoaDon hoaDon : list) {
+                Object[] row = {
+                    hoaDon.getMahoadon(),
+                    hoaDon.getTongsp(),
+                    hoaDon.getTongtien(),
+                    hoaDon.getManv()
+                };
+                model.addRow(row);
+            }
+        } catch (Exception e) {
+            DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!");
+        }
+    }
+    
+    void load2() {
+        DefaultTableModel model = (DefaultTableModel) tblHoaDon.getModel();
+        model.setRowCount(0);
+        try {
+            String keyword =  txtTimKiem.getText();
+            List<HoaDon> list = dao.selectByKeyword(keyword);
+            for (HoaDon hoaDon : list) {
+                Object[] row = {
+                    hoaDon.getMahoadon(),
+                    hoaDon.getTongsp(),
+                    hoaDon.getTongtien(),
+                    hoaDon.getManv()
+                };
+                model.addRow(row);
+            }
+        } catch (Exception e) {
+            DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!");
+        }
+    }
+    
+    void clear() {
+        HoaDon model = new HoaDon();
+        model.setManv(ShareHelper.USER.getManv());
+        model.setNgaytao(DateHelper.now());
+        this.setModel(model);
+    }
+    
+    void setModel(HoaDon model) {
+//        txtNgayTao.setText(DateHelper.toString(model.getNgaytao()));
+//        txtManv.setText(model.getManv());
+    }
+    
+//    void setModel(HoaDon model) {
+//
+//        txtMaLoai.setText(model.getMaLoaiSP());
+//        txtTenLoai.setText(model.getTenLoaiSP());
+//        
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -104,6 +177,11 @@ public class HoaDonJFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblHoaDonMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblHoaDon);
 
         jLabel1.setText("Hóa đơn:");
@@ -184,14 +262,26 @@ public class HoaDonJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtTimKiemActionPerformed
 
     private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
-        // TODO add your handling code here:
+        this.load2();
+        this.clear();        // TODO add your handling code here:
         
     }//GEN-LAST:event_btnTimKiemActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        
+        this.load();
+//        this.setStatus(true);
     }//GEN-LAST:event_formWindowOpened
+
+    private void tblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonMouseClicked
+//if (evt.getClickCount() == 2) {
+//            this.index = tblHoaDon.rowAtPoint(evt.getPoint());
+//            if (this.index >= 0) {
+//                this.edit();
+//                tabs.setSelectedIndex(0);
+//            }
+//        }        // TODO add your handling code here:
+    }//GEN-LAST:event_tblHoaDonMouseClicked
 
     /**
      * @param args the command line arguments
