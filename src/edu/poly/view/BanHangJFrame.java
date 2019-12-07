@@ -206,7 +206,7 @@ public void addAllDonHang(){
     private boolean check() {
         StringBuilder sb = new StringBuilder();
         if (txtMahoadon.getText().equals("")) {
-            sb.append("Mã hóa đơn không được để trống!");
+            sb.append("Mã hóa đơn không được để trống!\n");
         }
         if (txtTenSP.getText().equals("") | txtGiaSP.getText().equals("")) {
             sb.append("Sản phẩm chưa được thêm vào!\n");
