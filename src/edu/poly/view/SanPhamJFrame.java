@@ -9,6 +9,7 @@ import edu.poly.dao.LoaiSanPhamDAO;
 import edu.poly.dao.SanPhamDAO;
 import edu.poly.helper.DialogHelper;
 import edu.poly.helper.ShareHelper;
+import edu.poly.model.HoaDon;
 import edu.poly.model.LoaiSanPham;
 import edu.poly.model.SanPham;
 import java.io.File;
@@ -64,6 +65,11 @@ public class SanPhamJFrame extends javax.swing.JFrame {
     }
 
     void insert() {
+        SanPham model1 = dao.findById(txtMaSP.getText());
+        if (model1 != null) {
+            DialogHelper.alert(this, "Mã sản phẩm bị trùng");
+            return;
+        }
         SanPham model = getModel();
         setModel(model);
         if (model.getHinhsp() == null) {
@@ -112,6 +118,7 @@ public class SanPhamJFrame extends javax.swing.JFrame {
         this.setStatus(true);
         txtGiaSP.setText("");
         txtSoLuongSP.setText("");
+        lblHinh.setText("");
     }
 
     void edit() {

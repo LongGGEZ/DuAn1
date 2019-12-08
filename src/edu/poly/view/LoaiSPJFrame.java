@@ -49,6 +49,11 @@ public class LoaiSPJFrame extends javax.swing.JFrame {
     void insert() {
         LoaiSanPham model = getModel();
         setModel(model);
+        LoaiSanPham model1 = dao.findById(txtMaLoai.getText());
+        if (model1 != null) {
+            DialogHelper.alert(this, "Mã loại bị trùng");
+            return;
+        }
         try {
             
             dao.insert(model);

@@ -75,25 +75,6 @@ public class HoaDonJFrame extends javax.swing.JFrame {
             DialogHelper.alert(this, "Lỗi truy vấn dữ liệu!");
         }
     }
-    
-    void clear() {
-        HoaDon model = new HoaDon();
-        model.setManv(ShareHelper.USER.getManv());
-        model.setNgaytao(DateHelper.now());
-        this.setModel(model);
-    }
-    
-    void setModel(HoaDon model) {
-//        txtNgayTao.setText(DateHelper.toString(model.getNgaytao()));
-//        txtManv.setText(model.getManv());
-    }
-    
-//    void setModel(HoaDon model) {
-//
-//        txtMaLoai.setText(model.getMaLoaiSP());
-//        txtTenLoai.setText(model.getTenLoaiSP());
-//        
-//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -263,7 +244,6 @@ public class HoaDonJFrame extends javax.swing.JFrame {
 
     private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
         this.load2();
-        this.clear();        // TODO add your handling code here:
         
     }//GEN-LAST:event_btnTimKiemActionPerformed
 
@@ -274,13 +254,7 @@ public class HoaDonJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void tblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonMouseClicked
-//if (evt.getClickCount() == 2) {
-//            this.index = tblHoaDon.rowAtPoint(evt.getPoint());
-//            if (this.index >= 0) {
-//                this.edit();
-//                tabs.setSelectedIndex(0);
-//            }
-//        }        // TODO add your handling code here:
+
     }//GEN-LAST:event_tblHoaDonMouseClicked
 
     /**

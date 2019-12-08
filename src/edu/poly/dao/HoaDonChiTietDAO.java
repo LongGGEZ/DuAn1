@@ -22,6 +22,11 @@ public class HoaDonChiTietDAO {
         String sql = "INSERT INTO HoaDonChiTiet (mahoadon, tensp,giasp,soluongsp, thanhtien) VALUES (?,?,?,?,?)";
         JdbcHelper.executeUpdate(sql, model.getMahoadon(), model.getMasp(), model.getGiasp(), model.getSoluong(), model.getThanhtien());
     }
+   
+//    public void insert(String maHD, String tenSP, int gia, int slSP, int TT){
+//        String sql = "INSERT INTO HoaDonChiTiet (mahoadon, tensp,giasp,soluongsp, thanhtien) VALUES (?,?,?,?,?)";
+//        JdbcHelper.executeUpdate(sql, maHD, tenSP, gia, slSP, TT);
+//    }
 
     public List<HoaDonChiTiet> select() {
         String sql = "SELECT * FROM HoaDon";
