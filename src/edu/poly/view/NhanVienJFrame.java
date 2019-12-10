@@ -172,7 +172,7 @@ public class NhanVienJFrame extends javax.swing.JFrame {
         if (txtHoTen.getText().equals("")) {
             sb.append("Họ tên không được để trống!");
         } else if (!(Pattern.matches("^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ"
-                + "ẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ"
+                + "ẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềếểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ"
                 + "ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]+$", txtHoTen.getText()))) {
             JOptionPane.showMessageDialog(this, "Tên không hợp lệ");
             return false;

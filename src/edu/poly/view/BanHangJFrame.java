@@ -83,16 +83,24 @@ public class BanHangJFrame extends javax.swing.JFrame {
     }
 
     void insertHDCT() {
-        // HoaDonChiTiet model = getModelHDCT;
+        HoaDonChiTiet model = getModelHDCT();
         try {
-            //  hdctDAO.insert(model);
+            hdctDAO.insert(model);
         } catch (Exception e) {
             DialogHelper.alert(this, "Chưa lưu được hóa đơn chi tiết!");
 
         }
 
     }
-
+    HoaDonChiTiet getModelHDCT(){
+        HoaDonChiTiet model =new HoaDonChiTiet();
+        int row = tblDonHang.getRowCount();
+        for (int i = 0; i < row; i++) {
+          
+      
+        }
+        return model;
+    }
 
     HoaDon getModelHD() {
         HoaDon model = new HoaDon();
