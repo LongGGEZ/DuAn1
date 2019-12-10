@@ -54,7 +54,7 @@ public class HoaDonDAO {
     }
       public List<HoaDon> selectByKeyword(String keyword) {
         String sql = "SELECT * FROM HoaDon WHERE mahoadon LIKE ?";
-        return select(sql, keyword );
+        return select(sql, "%" + keyword + "%");
     }
 
     private HoaDon readFromResultSet(ResultSet rs) throws SQLException {

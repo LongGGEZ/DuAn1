@@ -81,9 +81,11 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         txtTaiKhoan = new javax.swing.JTextField();
         txtMatKhau = new javax.swing.JPasswordField();
         btnDanhNhap = new javax.swing.JButton();
+        btnDanhNhap1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CÔNG TY NƯỚC GIẢI KHÁT TIENLONG");
+        setUndecorated(true);
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
@@ -127,10 +129,19 @@ public class DangNhapJDialog extends javax.swing.JDialog {
 
         btnDanhNhap.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnDanhNhap.setForeground(new java.awt.Color(204, 0, 0));
-        btnDanhNhap.setText("Enter Your Account");
+        btnDanhNhap.setText("Login");
         btnDanhNhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDanhNhapActionPerformed(evt);
+            }
+        });
+
+        btnDanhNhap1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnDanhNhap1.setForeground(new java.awt.Color(204, 0, 0));
+        btnDanhNhap1.setText("Exit");
+        btnDanhNhap1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDanhNhap1ActionPerformed(evt);
             }
         });
 
@@ -144,11 +155,14 @@ public class DangNhapJDialog extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnDanhNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblTaiKhoan)
                             .addComponent(lblMatKhau)
-                            .addComponent(txtTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnDanhNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnDanhNhap1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addComponent(lblTittle)))
@@ -156,7 +170,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 476, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(73, 73, 73)
                 .addComponent(lblTittle)
@@ -169,7 +183,9 @@ public class DangNhapJDialog extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
-                .addComponent(btnDanhNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDanhNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDanhNhap1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(102, Short.MAX_VALUE))
         );
 
@@ -188,7 +204,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
                 .addGap(0, 0, 0))
         );
 
-        setSize(new java.awt.Dimension(703, 515));
+        setSize(new java.awt.Dimension(687, 476));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -197,6 +213,10 @@ public class DangNhapJDialog extends javax.swing.JDialog {
             this.login();
         }        // TODO add your handling code here:
     }//GEN-LAST:event_btnDanhNhapActionPerformed
+
+    private void btnDanhNhap1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDanhNhap1ActionPerformed
+    this.exit();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDanhNhap1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -243,6 +263,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDanhNhap;
+    private javax.swing.JButton btnDanhNhap1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblImage;
