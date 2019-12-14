@@ -138,8 +138,6 @@ public class MainJFrame extends javax.swing.JFrame {
         mnuHeThong = new javax.swing.JMenu();
         mniDangNhap = new javax.swing.JMenuItem();
         mniDangXuat = new javax.swing.JMenuItem();
-        jSeparator4 = new javax.swing.JPopupMenu.Separator();
-        mniDoiMatKhau = new javax.swing.JMenuItem();
         jSeparator5 = new javax.swing.JPopupMenu.Separator();
         mniThoat = new javax.swing.JMenuItem();
         mnuQuanLy = new javax.swing.JMenu();
@@ -284,11 +282,6 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
         mnuHeThong.add(mniDangXuat);
-        mnuHeThong.add(jSeparator4);
-
-        mniDoiMatKhau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/password.png"))); // NOI18N
-        mniDoiMatKhau.setText("Đổi mật khẩu");
-        mnuHeThong.add(mniDoiMatKhau);
         mnuHeThong.add(jSeparator5);
 
         mniThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/poly/images/exit.png"))); // NOI18N
@@ -517,7 +510,6 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
-    private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JPopupMenu.Separator jSeparator5;
     private javax.swing.JLabel lblDongHo;
     private javax.swing.JLabel lblImage;
@@ -526,7 +518,6 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniDangNhap;
     private javax.swing.JMenuItem mniDangXuat;
     private javax.swing.JMenuItem mniDoanhThu;
-    private javax.swing.JMenuItem mniDoiMatKhau;
     private javax.swing.JMenuItem mniGioiThieu;
     private javax.swing.JMenuItem mniHoadon;
     private javax.swing.JMenuItem mniHuongDan;
