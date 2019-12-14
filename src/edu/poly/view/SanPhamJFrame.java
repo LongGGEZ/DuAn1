@@ -266,6 +266,7 @@ public class SanPhamJFrame extends javax.swing.JFrame {
         cboLoaiSP = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         txtSoLuongSP = new javax.swing.JTextField();
+        btnThemLoai = new javax.swing.JButton();
         pnlDanhSach = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSanPham = new javax.swing.JTable();
@@ -380,6 +381,13 @@ public class SanPhamJFrame extends javax.swing.JFrame {
 
         jLabel1.setText("Số lượng:");
 
+        btnThemLoai.setText("Thêm loại");
+        btnThemLoai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemLoaiActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlCapNhatLayout = new javax.swing.GroupLayout(pnlCapNhat);
         pnlCapNhat.setLayout(pnlCapNhatLayout);
         pnlCapNhatLayout.setHorizontalGroup(
@@ -392,7 +400,7 @@ public class SanPhamJFrame extends javax.swing.JFrame {
                             .addGroup(pnlCapNhatLayout.createSequentialGroup()
                                 .addComponent(lblTenSP)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtTenSP))
+                                .addComponent(txtTenSP, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE))
                             .addGroup(pnlCapNhatLayout.createSequentialGroup()
                                 .addGap(5, 5, 5)
                                 .addComponent(lblMaSP)
@@ -408,9 +416,12 @@ public class SanPhamJFrame extends javax.swing.JFrame {
                                     .addComponent(lblLoaitSP))
                                 .addGap(11, 11, 11)
                                 .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cboLoaiSP, 0, 310, Short.MAX_VALUE)
                                     .addComponent(txtGiaSP)
-                                    .addComponent(txtSoLuongSP))))
+                                    .addComponent(txtSoLuongSP)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCapNhatLayout.createSequentialGroup()
+                                        .addComponent(cboLoaiSP, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnThemLoai)))))
                         .addGap(42, 42, 42)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -456,7 +467,8 @@ public class SanPhamJFrame extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(pnlCapNhatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblLoaitSP)
-                            .addComponent(cboLoaiSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cboLoaiSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnThemLoai)))
                     .addGroup(pnlCapNhatLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -608,6 +620,11 @@ public class SanPhamJFrame extends javax.swing.JFrame {
 //        selectComboBox();        // TODO add your handling code here:
     }//GEN-LAST:event_cboLoaiSPPopupMenuWillBecomeInvisible
 
+    private void btnThemLoaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemLoaiActionPerformed
+        // TODO add your handling code here:
+        new LoaiSPJFrame().setVisible(true);
+    }//GEN-LAST:event_btnThemLoaiActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -652,6 +669,7 @@ public class SanPhamJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnMoi;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnPrev;
+    private javax.swing.JButton btnThemLoai;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> cboLoaiSP;
     private javax.swing.JLabel jLabel1;

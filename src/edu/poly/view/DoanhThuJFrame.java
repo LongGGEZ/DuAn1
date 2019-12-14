@@ -62,7 +62,6 @@ public class DoanhThuJFrame extends javax.swing.JFrame {
 
         lblTongDoanhThu.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTongDoanhThu.setForeground(new java.awt.Color(255, 0, 0));
-        lblTongDoanhThu.setText("1980000 Đ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,8 +83,8 @@ public class DoanhThuJFrame extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addComponent(jLabel3)
                                 .addGap(18, 18, 18)
-                                .addComponent(lblTongDoanhThu)))
-                        .addGap(0, 174, Short.MAX_VALUE)))
+                                .addComponent(lblTongDoanhThu, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 175, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(

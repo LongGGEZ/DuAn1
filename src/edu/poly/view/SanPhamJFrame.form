@@ -78,7 +78,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="lblTenSP" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="txtTenSP" max="32767" attributes="0"/>
+                                      <Component id="txtTenSP" pref="310" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
@@ -99,9 +99,13 @@
                                       </Group>
                                       <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="cboLoaiSP" pref="310" max="32767" attributes="0"/>
                                           <Component id="txtGiaSP" max="32767" attributes="0"/>
                                           <Component id="txtSoLuongSP" max="32767" attributes="0"/>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="cboLoaiSP" max="32767" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="btnThemLoai" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                   </Group>
                               </Group>
@@ -160,6 +164,7 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lblLoaitSP" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="cboLoaiSP" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnThemLoai" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -355,6 +360,14 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtSoLuongSP">
+            </Component>
+            <Component class="javax.swing.JButton" name="btnThemLoai">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Th&#xea;m lo&#x1ea1;i"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemLoaiActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
