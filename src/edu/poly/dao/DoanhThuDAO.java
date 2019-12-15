@@ -9,29 +9,25 @@ import edu.poly.helper.JdbcHelper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
  *
- * @author Admin
+ * @author hoang
  */
-public class ThongKeDAO {
-    public List<Object[]> getDoanhThu(int nam) {
+public class DoanhThuDAO {
+
+    public List<Object[]> getDoanhThu() {
         List<Object[]> list = new ArrayList<>();
         try {
             ResultSet rs = null;
             try {
-                String sql = "{call sp_ThongKeDoanhThu (?)}";
-                rs = JdbcHelper.executeQuery(sql, nam);
+                String sql = "{call sp_DoanhThu }";
+                rs = JdbcHelper.executeQuery(sql);
                 while (rs.next()) {
                     Object[] model = {
-                        rs.getString("ChuyenDe"),
-                        rs.getInt("SoKH"),
-                        rs.getInt("SoHV"),
-                        rs.getDouble("DoanhThu"),
-                        rs.getDouble("ThapNhat"),
-                        rs.getDouble("CaoNhat"),
-                        rs.getDouble("TrungBinh")
+                        rs.getDouble("okman")
                     };
                     list.add(model);
                 }
@@ -42,5 +38,15 @@ public class ThongKeDAO {
             throw new RuntimeException(e);
         }
         return list;
+    }
+
+    public static void main(String[] args) {
+        DoanhThuDAO dtDAO = new DoanhThuDAO();
+        List<Object[]> list = dtDAO.getDoanhThu();
+        for (Object[] objects : list) {
+            String dt = Arrays.toString(objects);
+            System.out.println(dt);
+
+        }
     }
 }

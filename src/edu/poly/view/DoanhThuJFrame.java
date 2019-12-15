@@ -5,6 +5,8 @@
  */
 package edu.poly.view;
 
+import edu.poly.dao.DoanhThuDAO;
+import java.util.Arrays;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,16 +23,15 @@ public class DoanhThuJFrame extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
     }
-    
-//    void fillTableDoanhThu() {
-//        DefaultTableModel model = (DefaultTableModel) tblDoanhThu.getModel();
-//        model.setRowCount(0);
-//        int nam = Integer.parseInt(cboNam.getSelectedItem().toString());
-//        List<Object[]> list = dao.getDoanhThu(nam);
-//        for (Object[] row : list) {
-//            model.addRow(row);
-//        }
-//    }
+
+    public void DoanhThu(){
+        DoanhThuDAO dtDAO = new DoanhThuDAO();
+        List<Object[]> list = dtDAO.getDoanhThu();
+        for (Object[] objects : list) {
+            String dt = Arrays.toString(objects);
+            lblTongDoanhThu.setText(dt+"Đ");
+    }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,6 +49,11 @@ public class DoanhThuJFrame extends javax.swing.JFrame {
         lblTongDoanhThu = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         cboNam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2019" }));
 
@@ -75,16 +81,14 @@ public class DoanhThuJFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cboNam, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(182, 182, 182)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblTongDoanhThu, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 175, Short.MAX_VALUE)))
+                        .addGap(182, 182, 182)
+                        .addComponent(jLabel1)
+                        .addGap(0, 175, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblTongDoanhThu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -105,6 +109,11 @@ public class DoanhThuJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        this.DoanhThu();
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
