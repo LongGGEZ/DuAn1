@@ -29,7 +29,7 @@ public class DoanhThuJFrame extends javax.swing.JFrame {
         List<Object[]> list = dtDAO.getDoanhThu();
         for (Object[] objects : list) {
             String dt = Arrays.toString(objects);
-            lblTongDoanhThu.setText(dt+"Đ");
+            lblTongDoanhThu.setText(dt.replaceAll("[\\[\\](){}]", "")+" Đ");
     }
 }
 
